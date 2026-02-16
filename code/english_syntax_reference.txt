@@ -1,0 +1,27 @@
+# Potential English Syntax Rules (CNF)
+# S -> NP VP
+# S -> VP
+# S -> NP
+# NP -> DT NNS
+# NP -> DT NN
+# NP -> NNS
+# NP -> NN
+# NP -> PRP
+# VP -> V NP
+# VP -> V
+# VP -> V PP
+# PP -> IN NP
+# ADJP -> RB JJ
+# ADJP -> JJ
+# S -> S CC S (conjunctions)
+
+# Preterminals (Categories)
+# DT (Determiners): the, a, an, this, that
+# NNS (Nouns Plural): dogs, cats, mice, birds
+# NN (Nouns Singular): dog, cat, mouse
+# V (Verbs): chase, like, eat, run, sleep, see
+# IN (Prepositions): in, on, at, with, by
+# JJ (Adjectives): big, small, red, blue
+# RB (Adverbs): quickly, slowly, very
+# PRP (Pronouns): he, she, it, they, we
+# CC (Conjunctions): and, or, but
