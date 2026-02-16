@@ -15,10 +15,10 @@ import argparse
 from dataclasses import dataclass
 from pathlib import Path
 import random
-from typing import Dict, List, Sequence, Tuple
+from typing import Dict, List, Optional, Sequence, Tuple
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class LoadedArtifacts:
     token_to_id: Dict[str, int]
     id_to_token: List[str]
@@ -183,7 +183,7 @@ def _sample_sentence_ids(
     return generated
 
 
-def main(argv: Sequence[str] | None = None) -> int:
+def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         description='Load a GPT-2 checkpoint, inspect next-token probabilities, and sample sentences.'
     )
@@ -228,7 +228,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if not checkpoint_path.exists():
         raise SystemExit(f'Checkpoint not found: {checkpoint_path}')
 
-    output_path: Path | None = None
+    output_path: Optional[Path] = None
     if args.output_file:
         output_path = _resolve_path(args.output_file, script_dir=script_dir)
         output_path.parent.mkdir(parents=True, exist_ok=True)
