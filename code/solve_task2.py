@@ -105,6 +105,7 @@ def infer_tags(vocab, samples):
     left = defaultdict(Counter)
     right = defaultdict(Counter)
     freq = Counter()
+    sent_final = Counter()
 
     for s in samples:
         for i, w in enumerate(s):
@@ -113,6 +114,8 @@ def infer_tags(vocab, samples):
                 left[w][s[i - 1]] += 1
             if i + 1 < len(s):
                 right[w][s[i + 1]] += 1
+            else:
+                sent_final[w] += 1
 
     det_words = {"the", "a", "an", "this", "that", "these", "those"}
     num_words = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"}
@@ -174,8 +177,15 @@ def infer_tags(vocab, samples):
 
         total_r = sum(right[w].values())
         obj_like = sum(c for nxt, c in right[w].items() if nxt in noun_starts)
-        ratio = (obj_like / total_r) if total_r > 0 else 0.0
-        tag[w] = "VTR" if ratio >= 0.40 else "VINTR"
+        obj_ratio = (obj_like / total_r) if total_r > 0 else 0.0
+
+        # If a verb often closes sentences, it's more likely intransitive here.
+        end_ratio = (sent_final[w] / freq[w]) if freq[w] > 0 else 0.0
+
+        if end_ratio >= 0.22:
+            tag[w] = "VINTR"
+        else:
+            tag[w] = "VTR" if obj_ratio >= 0.42 else "VINTR"
 
     return tag, freq
 
@@ -201,7 +211,7 @@ def build_nonterminal_rules():
         {"LHS": "S", "RHS": "NP VP", "Probability": 0.44},
         {"LHS": "S", "RHS": "NP VINTR", "Probability": 0.18},
         {"LHS": "S", "RHS": "NOUN VP", "Probability": 0.08},
-        {"LHS": "S", "RHS": "NOUN VINTR", "Probability": 0.04},
+        {"LHS": "S", "RHS": "NP VTR", "Probability": 0.04},
         {"LHS": "S", "RHS": "ADJ S", "Probability": 0.10},
         {"LHS": "S", "RHS": "ADV S", "Probability": 0.10},
         {"LHS": "S", "RHS": "S ADV", "Probability": 0.04},
@@ -240,7 +250,7 @@ def build_lexical_rules(vocab, tags, freq):
         by_tag[tags[w]].append(w)
 
     rules = []
-    alpha = 0.5
+    alpha = 0.15
     for t, ws in by_tag.items():
         total = sum(freq[w] for w in ws) + alpha * len(ws)
         for w in ws:
