@@ -1,306 +1,275 @@
 import argparse
 import csv
 import os
-import subprocess
-import tempfile
-from collections import Counter, defaultdict
+import random
+from collections import Counter
+
+from task2_pipeline import (
+    build_lexical_probs,
+    build_tag_map,
+    cluster_gmm_diag,
+    cluster_kmeans,
+    collect_substitution_contexts,
+    collect_word_frequencies,
+    cyk_coverage,
+    export_rules_for_csv,
+    get_wte_embeddings,
+    induce_binary_rules,
+    initialize_binary_probs,
+    load_model_bundle,
+    prune_and_postprocess,
+    refine_clusters_with_substitution,
+    run_inside_outside_em,
+    sample_sentences,
+    sentence_to_tags,
+    set_seed,
+)
 
 
-# -----------------------------------------------------------------------------
-# Syntax-guided Task 2 solver
-#
-# Goal: recover a compact CNF PCFG for English-like data.
-# - Build one preterminal assignment per terminal word (required by task tips).
-# - Use lightweight English syntax heuristics for POS-like tags.
-# - Use sampled context to split verbs into transitive/intransitive.
-# - Emit exactly 20 nonterminal binary rules (Task 2 prior) + lexical rules.
-# -----------------------------------------------------------------------------
+def _resolve_checkpoint_path(path_str: str) -> str:
+    if os.path.exists(path_str):
+        return os.path.abspath(path_str)
 
-
-def sample_sentences(checkpoint_path: str, num_samples: int, device: str):
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    with tempfile.NamedTemporaryFile(mode="w+", delete=False) as tmp:
-        out_path = tmp.name
-
-    cmd = [
-        "python",
-        os.path.join(script_dir, "sampling.py"),
-        checkpoint_path,
-        "--num-samples",
-        str(num_samples),
-        "--output-file",
-        out_path,
-        "--device",
-        device,
+    candidates = [
+        os.path.join(script_dir, path_str),
+        os.path.join(script_dir, "checkpoints", os.path.basename(path_str)),
+        os.path.join(script_dir, "..", path_str),
+        os.path.join(script_dir, "..", "code", path_str),
     ]
-    subprocess.run(cmd, check=True)
-
-    sents = []
-    with open(out_path, "r", encoding="utf-8") as f:
-        for line in f:
-            toks = line.strip().split()
-            if toks:
-                sents.append(toks)
-
-    os.remove(out_path)
-    return sents
+    for cand in candidates:
+        cand_abs = os.path.abspath(cand)
+        if os.path.exists(cand_abs):
+            return cand_abs
+    raise FileNotFoundError(f"Checkpoint not found: {path_str}")
 
 
-def collect_vocab(checkpoint_path: str, device: str = "cpu"):
-    from sampling import _load_checkpoint
-
-    model, artifacts = _load_checkpoint(os.path.abspath(checkpoint_path), device=device)
-    _ = model  # silence lints
-    vocab = [w for w in artifacts.id_to_token if w and w not in {"<bos>", "<eos>", "<pad>", "<unk>"}]
-    return vocab
-
-
-def guess_base_tag(word: str):
-    det = {"the", "a", "an", "this", "that", "these", "those"}
-    prep = {
-        "in", "on", "at", "by", "with", "from", "to", "near", "inside", "outside", "upstairs",
-        "downstairs", "abroad", "away", "back", "home", "everywhere", "elsewhere", "around", "over",
-        "under", "across", "through", "within", "without", "beyond", "before", "after", "during",
-    }
-    aux = {"can", "may", "will", "should", "could", "would", "might", "must"}
-    adv = {
-        "today", "tomorrow", "yesterday", "soon", "really", "very", "quite", "too", "also",
-        "always", "often", "never", "here", "there",
-    }
-    adjs = {
-        "big", "small", "noisy", "quiet", "happy", "sad", "serious", "kind", "brave", "smart",
-        "ancient", "modern", "quick", "slow", "gentle", "careful", "eager", "honest", "calm",
-    }
-
-    if word in det:
-        return "DET"
-    if word in prep:
-        return "PREP"
-    if word in aux:
-        return "AUX"
-    if word in adv:
-        return "ADV"
-    if word in adjs:
-        return "ADJ"
-    if word.isdigit() or word in {
-        "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"
-    }:
-        return "NUM"
-
-    # morphology-driven defaults
-    if word.endswith("ly"):
-        return "ADV"
-    if word.endswith("s") and len(word) > 3:
-        # many nouns are plural, but verbs can also end with -s.
-        return "NOUN"
-
-    return "UNK"
-
-
-def infer_tags(vocab, samples):
-    # Initial pass from static heuristics
-    tag = {w: guess_base_tag(w) for w in vocab}
-
-    # Collect contexts
-    left = defaultdict(Counter)
-    right = defaultdict(Counter)
-    freq = Counter()
-    sent_final = Counter()
-
-    for s in samples:
-        for i, w in enumerate(s):
-            freq[w] += 1
-            if i > 0:
-                left[w][s[i - 1]] += 1
-            if i + 1 < len(s):
-                right[w][s[i + 1]] += 1
-            else:
-                sent_final[w] += 1
-
-    det_words = {"the", "a", "an", "this", "that", "these", "those"}
-    num_words = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"}
-    prep_words = {
-        "in", "on", "at", "by", "with", "from", "to", "near", "inside", "outside", "upstairs",
-        "downstairs", "abroad", "away", "back", "home", "everywhere", "elsewhere", "around", "over",
-        "under", "across", "through", "within", "without", "beyond", "before", "after", "during",
-    }
-
-    # Fill UNK using context + morphology, balancing noun-vs-verb evidence
-    for w in vocab:
-        if tag[w] != "UNK":
-            continue
-
-        l = left[w]
-        r = right[w]
-
-        noun_score = (
-            sum(c for t, c in l.items() if t in det_words or t in num_words or t in prep_words)
-            + sum(c for t, c in r.items() if t in prep_words)
-        )
-        verb_score = (
-            sum(c for t, c in l.items() if t in det_words or t in num_words)
-            + sum(c for t, c in r.items() if t in det_words or t in num_words)
-        )
-
-        if w.endswith("ed") or w.endswith("ing"):
-            verb_score += 3
-        if w.endswith("s") and len(w) > 3:
-            noun_score += 1
-
-        tag[w] = "VERB" if verb_score >= noun_score else "NOUN"
-
-    # Split VERB into VTR / VINTR.
-    # Use (a) clear English intransitive verb families + (b) right-context object evidence.
-    intr_roots = {
-        "arriv", "depart", "sleep", "laugh", "smil", "cry", "cough", "sneez",
-        "wander", "travel", "pause", "collapse", "shout", "wait", "dance"
-    }
-
-    noun_starts = det_words | num_words | {
-        w for w, t in tag.items() if t in {"NOUN", "ADJ", "NUM"}
-    }
-
-    def stemish(x: str):
-        for suf in ("ing", "ed", "es", "s"):
-            if x.endswith(suf) and len(x) > len(suf) + 1:
-                return x[: -len(suf)]
-        return x
-
-    for w in list(vocab):
-        if tag[w] != "VERB":
-            continue
-
-        st = stemish(w)
-        if any(st.startswith(r) for r in intr_roots):
-            tag[w] = "VINTR"
-            continue
-
-        total_r = sum(right[w].values())
-        obj_like = sum(c for nxt, c in right[w].items() if nxt in noun_starts)
-        obj_ratio = (obj_like / total_r) if total_r > 0 else 0.0
-
-        # If a verb often closes sentences, it's more likely intransitive here.
-        end_ratio = (sent_final[w] / freq[w]) if freq[w] > 0 else 0.0
-
-        if end_ratio >= 0.22:
-            tag[w] = "VINTR"
-        else:
-            tag[w] = "VTR" if obj_ratio >= 0.42 else "VINTR"
-
-    return tag, freq
-
-
-def normalize_probs_by_lhs(rules):
-    by_lhs = defaultdict(float)
-    for r in rules:
-        by_lhs[r["LHS"]] += r["Probability"]
-
-    out = []
-    for r in rules:
-        z = by_lhs[r["LHS"]]
-        p = r["Probability"] / z if z > 0 else 0.0
-        out.append({**r, "Probability": p})
-    return out
-
-
-def build_nonterminal_rules():
-    # Exactly 20 binary rules (Task 2 prior), all CNF.
-    # Tuned for sampled distribution: NP/PP-heavy with optional leading ADJ/ADV and modal auxiliaries.
-    rules = [
-        # S expansions
-        {"LHS": "S", "RHS": "NP VP", "Probability": 0.56},
-        {"LHS": "S", "RHS": "NP VINTR", "Probability": 0.16},
-        {"LHS": "S", "RHS": "NOUN VP", "Probability": 0.08},
-        {"LHS": "S", "RHS": "NP VTR", "Probability": 0.03},
-        {"LHS": "S", "RHS": "ADJ S", "Probability": 0.06},
-        {"LHS": "S", "RHS": "ADV S", "Probability": 0.06},
-        {"LHS": "S", "RHS": "S ADV", "Probability": 0.02},
-        {"LHS": "S", "RHS": "NP AUXVP", "Probability": 0.03},
-
-        # auxiliary bridge
-        {"LHS": "AUXVP", "RHS": "AUX VP", "Probability": 1.00},
-
-        # NP structure
-        {"LHS": "NP", "RHS": "DET NOUN", "Probability": 0.52},
-        {"LHS": "NP", "RHS": "NUM NOUN", "Probability": 0.16},
-        {"LHS": "NP", "RHS": "DET NBAR", "Probability": 0.10},
-        {"LHS": "NP", "RHS": "NP PP", "Probability": 0.22},
-        {"LHS": "NBAR", "RHS": "ADJ NOUN", "Probability": 1.00},
-
-        # PP
-        {"LHS": "PP", "RHS": "PREP NP", "Probability": 1.00},
-
-        # VP structure
-        {"LHS": "VP", "RHS": "VTR NP", "Probability": 0.57},
-        {"LHS": "VP", "RHS": "VTR PP", "Probability": 0.09},
-        {"LHS": "VP", "RHS": "VINTR PP", "Probability": 0.12},
-        {"LHS": "VP", "RHS": "VP PP", "Probability": 0.17},
-        {"LHS": "VP", "RHS": "VP ADV", "Probability": 0.05},
-    ]
-
-    assert len(rules) == 20
-    wrapped = [{"LHS": r["LHS"], "LHS Type": "nonterminal", "RHS": r["RHS"], "Probability": r["Probability"]} for r in rules]
-    return normalize_probs_by_lhs(wrapped)
-
-
-def build_lexical_rules(vocab, tags, freq):
-    # One terminal generated by exactly one preterminal tag.
-    by_tag = defaultdict(list)
-    for w in vocab:
-        by_tag[tags[w]].append(w)
-
-    rules = []
-    alpha = 0.15
-    for t, ws in by_tag.items():
-        total = sum(freq[w] for w in ws) + alpha * len(ws)
-        for w in ws:
-            p = (freq[w] + alpha) / total if total > 0 else 1.0 / len(ws)
-            rules.append({"LHS": t, "LHS Type": "preterminal", "RHS": w, "Probability": p})
-
-    return rules
-
-
-def save_pcfg(path, nonterm_rules, lex_rules):
-    rules = nonterm_rules + lex_rules
-    # normalize by LHS once more for safety
-    rules = normalize_probs_by_lhs(rules)
-
+def _write_csv(path: str, rows: list[dict]) -> None:
     with open(path, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["ID", "LHS", "LHS Type", "RHS", "Probability"])
-        for i, r in enumerate(rules):
-            writer.writerow([i, r["LHS"], r["LHS Type"], r["RHS"], f"{r['Probability']:.6f}"])
+        for i, r in enumerate(rows):
+            writer.writerow([i, r["LHS"], r["LHS Type"], r["RHS"], f"{float(r['Probability']):.6f}"])
 
 
-def solve_task2(checkpoint_path, output_path, num_samples=4000, device="cpu"):
-    checkpoint_path = os.path.abspath(checkpoint_path)
+def solve_task2(args: argparse.Namespace) -> None:
+    set_seed(args.seed)
+    checkpoint = _resolve_checkpoint_path(args.checkpoint)
 
-    print(f"[1/4] Sampling {num_samples} sentences from checkpoint...")
-    samples = sample_sentences(checkpoint_path, num_samples=num_samples, device=device)
+    print(f"[1/8] Loading checkpoint from {checkpoint}")
+    bundle = load_model_bundle(checkpoint, device=args.device)
 
-    print("[2/4] Loading vocabulary...")
-    vocab = collect_vocab(checkpoint_path, device=device)
+    print(f"[2/8] Sampling {args.samples} sentences for induction")
+    sentences = sample_sentences(
+        bundle,
+        num_samples=args.samples,
+        max_new_tokens=args.max_new_tokens,
+        top_k=args.top_k,
+        batch_size=args.sample_batch_size,
+        show_progress=args.progress,
+    )
+    print(f"Sampled sentences: {len(sentences)}")
 
-    print("[3/4] Inferring lexical categories (syntax-guided heuristics)...")
-    tags, freq = infer_tags(vocab, samples)
-    tag_counts = Counter(tags.values())
-    print("Tag inventory:", dict(sorted(tag_counts.items(), key=lambda x: x[0])))
+    print("[3/8] Learning preterminal clusters from wte.weight")
+    embeddings = get_wte_embeddings(bundle)
+    if args.cluster_method == "gmm":
+        assignments = cluster_gmm_diag(embeddings, k=args.num_tags, seed=args.seed, iters=args.cluster_iters)
+    else:
+        assignments = cluster_kmeans(embeddings, k=args.num_tags, seed=args.seed, iters=args.cluster_iters)
 
-    print("[4/4] Building PCFG and writing CSV...")
-    nonterm_rules = build_nonterminal_rules()
-    lex_rules = build_lexical_rules(vocab, tags, freq)
-    save_pcfg(output_path, nonterm_rules, lex_rules)
+    contexts = collect_substitution_contexts(
+        sentences,
+        word_to_id=bundle.word_to_id,
+        bos_id=bundle.artifacts.bos_id,
+        max_contexts_per_word=args.probe_contexts_per_word,
+        max_prefix_len=args.probe_prefix_len,
+        seed=args.seed,
+    )
 
-    print(f"Saved grammar to: {output_path}")
-    print(f"Rules: {len(nonterm_rules)} nonterminal + {len(lex_rules)} preterminal = {len(nonterm_rules)+len(lex_rules)}")
+    if args.enable_substitution_probe:
+        print("[4/8] Refining clusters with substitution KL probe")
+        assignments, probe_stats = refine_clusters_with_substitution(
+            bundle,
+            bundle.vocab_words,
+            embeddings,
+            assignments,
+            contexts,
+            max_probe_words=args.max_probe_words,
+            reps_per_cluster=args.probe_representatives,
+            probe_weight=args.probe_weight,
+            seed=args.seed,
+        )
+        print(
+            f"Probe avg KL: {probe_stats['avg_probe_kl']:.4f}, moved words: {int(probe_stats['moved_words'])}"
+        )
+    else:
+        print("[4/8] Skipping substitution KL refinement (--enable-substitution-probe not set)")
+
+    word_to_tag = build_tag_map(bundle.vocab_words, assignments)
+    tag_counts = Counter(word_to_tag.values())
+    print(f"Induced preterminal tags: {len(tag_counts)}")
+
+    print("[5/8] Mining exactly 20 binary nonterminal rules (held-out CYK coverage tuning)")
+    tagged_sents = [sentence_to_tags(s, word_to_tag) for s in sentences]
+    tagged_sents = [s for s in tagged_sents if len(s) >= 2]
+    if not tagged_sents:
+        raise RuntimeError("No tagged sentences with length >= 2 after sampling")
+
+    rng = random.Random(args.seed)
+    shuffled_tagged = list(tagged_sents)
+    rng.shuffle(shuffled_tagged)
+    holdout_n = int(len(shuffled_tagged) * max(0.0, min(0.9, args.coverage_holdout_ratio)))
+    if args.max_coverage_tuning_sentences > 0:
+        holdout_n = min(holdout_n, args.max_coverage_tuning_sentences)
+    if holdout_n <= 0 and len(shuffled_tagged) >= 20:
+        holdout_n = min(args.default_coverage_holdout_min, len(shuffled_tagged) // 5)
+
+    heldout_tagged = shuffled_tagged[:holdout_n]
+    induction_tagged = shuffled_tagged[holdout_n:] if holdout_n < len(shuffled_tagged) else shuffled_tagged
+    if not induction_tagged:
+        induction_tagged = shuffled_tagged
+
+    binary_rules, binary_rule_support, induce_stats = induce_binary_rules(
+        induction_tagged,
+        num_rules=args.num_binary_rules,
+        seed=args.seed,
+        num_start_pair_rules=args.num_start_pair_rules,
+        heldout_tagged_sentences=heldout_tagged,
+        pair_candidate_limit=args.coverage_pair_candidates,
+        recursion_candidate_limit=args.coverage_recursion_candidates,
+        eval_candidate_limit=args.coverage_eval_candidates,
+        max_coverage_eval_sentences=args.max_coverage_eval_sentences,
+        coverage_min_gain=args.coverage_min_gain,
+        recursion_support_min=args.coverage_recursion_min_support,
+        include_split_recursion=args.enable_split_recursion,
+    )
+    print(
+        f"Coverage tuning held-out: {int(induce_stats['heldout_total'])} "
+        f"(coverage={induce_stats['heldout_coverage']:.3f})"
+    )
+    assert len(binary_rules) == args.num_binary_rules
+
+    word_freq = collect_word_frequencies(sentences, bundle.vocab_words)
+    lex_probs = build_lexical_probs(bundle.vocab_words, word_to_tag, word_freq, alpha=args.lex_alpha)
+
+    print("[6/8] Estimating probabilities with Inside-Outside EM")
+    binary_probs_init = initialize_binary_probs(
+        binary_rules,
+        rule_scores=binary_rule_support,
+        smoothing=args.init_rule_smoothing,
+    )
+    em_data = [s for s in sentences if 1 <= len(s) <= args.max_sent_len_for_em]
+    if args.max_em_sentences > 0:
+        em_data = em_data[: args.max_em_sentences]
+
+    binary_probs, lex_probs, ll_hist = run_inside_outside_em(
+        em_data,
+        binary_rules=binary_rules,
+        binary_probs_init=binary_probs_init,
+        lex_probs_init=lex_probs,
+        em_iters=args.em_iters,
+        tol=args.em_tol,
+        start_symbol="S",
+        show_progress=args.progress,
+    )
+    if ll_hist:
+        print(f"EM iterations: {len(ll_hist)}, last avg log-likelihood: {ll_hist[-1]:.4f}")
+    else:
+        print("EM did not run (no covered training sentences).")
+
+    print("[7/8] Post-processing constraints + CYK coverage")
+    final_binary_rules, final_binary_probs, final_lex_probs = prune_and_postprocess(
+        binary_rules,
+        binary_probs,
+        lex_probs,
+        min_prob=args.min_rule_prob,
+        target_binary_rules=args.num_binary_rules,
+    )
+
+    covered, total, cov_ratio = cyk_coverage(
+        [s for s in sentences if 1 <= len(s) <= args.max_sent_len_for_coverage],
+        final_binary_rules,
+        final_binary_probs,
+        final_lex_probs,
+        max_sentences=args.max_coverage_sentences if args.max_coverage_sentences > 0 else None,
+        start_symbol="S",
+    )
+    print(f"CYK coverage: {covered}/{total} = {cov_ratio:.3f}")
+
+    print(f"[8/8] Writing grammar to {args.output}")
+    rows = export_rules_for_csv(final_binary_rules, final_binary_probs, final_lex_probs)
+
+    # Hard constraint: each terminal appears in exactly one preterminal rule.
+    terminal_lhs = {}
+    for r in rows:
+        if r["LHS Type"] != "preterminal":
+            continue
+        w = r["RHS"]
+        lhs = r["LHS"]
+        if w in terminal_lhs and terminal_lhs[w] != lhs:
+            raise RuntimeError(f"Terminal {w} assigned to multiple preterminals")
+        terminal_lhs[w] = lhs
+
+    _write_csv(args.output, rows)
+    print(
+        f"Saved {len(rows)} total rules ({len(final_binary_rules)} nonterminal + "
+        f"{len(rows) - len(final_binary_rules)} preterminal)"
+    )
+
+
+def build_arg_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(description="Task 2 model-driven PCFG induction")
+    p.add_argument("--checkpoint", default="code/checkpoints/pcfg2.pt")
+    p.add_argument("--output", default="pcfg2.csv")
+    p.add_argument("--samples", type=int, default=30000)
+    p.add_argument("--device", default="cpu", choices=["cpu", "cuda", "auto"])
+    p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--top-k", type=int, default=0)
+    p.add_argument("--max-new-tokens", type=int, default=12)
+    p.add_argument("--sample-batch-size", type=int, default=512)
+
+    p.add_argument("--num-tags", type=int, default=12)
+    p.add_argument("--cluster-method", choices=["kmeans", "gmm"], default="kmeans")
+    p.add_argument("--cluster-iters", type=int, default=30)
+
+    p.add_argument("--enable-substitution-probe", dest="enable_substitution_probe", action="store_true", default=True)
+    p.add_argument("--disable-substitution-probe", dest="enable_substitution_probe", action="store_false")
+    p.add_argument("--max-probe-words", type=int, default=80)
+    p.add_argument("--probe-contexts-per-word", type=int, default=5)
+    p.add_argument("--probe-prefix-len", type=int, default=4)
+    p.add_argument("--probe-representatives", type=int, default=3)
+    p.add_argument("--probe-weight", type=float, default=0.35)
+
+    p.add_argument("--num-binary-rules", type=int, default=20)
+    p.add_argument("--num-start-pair-rules", type=int, default=3)
+    p.add_argument("--coverage-holdout-ratio", type=float, default=0.2)
+    p.add_argument("--default-coverage-holdout-min", type=int, default=500)
+    p.add_argument("--max-coverage-tuning-sentences", type=int, default=3000)
+    p.add_argument("--coverage-pair-candidates", type=int, default=180)
+    p.add_argument("--coverage-recursion-candidates", type=int, default=80)
+    p.add_argument("--coverage-eval-candidates", type=int, default=50)
+    p.add_argument("--max-coverage-eval-sentences", type=int, default=1500)
+    p.add_argument("--coverage-min-gain", type=float, default=0.0)
+    p.add_argument("--coverage-recursion-min-support", type=int, default=8)
+    p.add_argument("--enable-split-recursion", action="store_true", default=True)
+    p.add_argument("--disable-split-recursion", dest="enable_split_recursion", action="store_false")
+
+    p.add_argument("--lex-alpha", type=float, default=0.1)
+    p.add_argument("--em-iters", type=int, default=10)
+    p.add_argument("--em-tol", type=float, default=1e-4)
+    p.add_argument("--max-em-sentences", type=int, default=4000)
+    p.add_argument("--max-sent-len-for-em", type=int, default=12)
+    p.add_argument("--init-rule-smoothing", type=float, default=1.0)
+
+    p.add_argument("--max-coverage-sentences", type=int, default=1000)
+    p.add_argument("--max-sent-len-for-coverage", type=int, default=16)
+
+    p.add_argument("--min-rule-prob", type=float, default=1e-5)
+    p.add_argument("--progress", dest="progress", action="store_true", default=True)
+    p.add_argument("--no-progress", dest="progress", action="store_false")
+    return p
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--checkpoint", default="code/checkpoints/pcfg2.pt")
-    parser.add_argument("--output", default="pcfg2.csv")
-    parser.add_argument("--device", default="cpu")
-    parser.add_argument("--samples", type=int, default=4000)
-    args = parser.parse_args()
-
-    solve_task2(args.checkpoint, args.output, num_samples=args.samples, device=args.device)
+    parser = build_arg_parser()
+    solve_task2(parser.parse_args())
