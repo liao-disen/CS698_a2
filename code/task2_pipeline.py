@@ -947,12 +947,58 @@ def cyk_coverage(
     return covered, total, covered / max(1, total)
 
 
+def _apply_lhs_probability_floor(probs: Dict[Tuple, float], floor: float) -> Dict[Tuple, float]:
+    if floor <= 0.0:
+        return dict(probs)
+
+    by_lhs = defaultdict(list)
+    for r, p in probs.items():
+        by_lhs[r[0]].append((r, max(0.0, float(p))))
+
+    out: Dict[Tuple, float] = {}
+    for lhs, items in by_lhs.items():
+        n = len(items)
+        if n == 0:
+            continue
+
+        # If floor is infeasible, back off to uniform.
+        eff_floor = min(floor, 1.0 / n)
+
+        lows = [(r, p) for r, p in items if p < eff_floor]
+        highs = [(r, p) for r, p in items if p >= eff_floor]
+
+        fixed_mass = eff_floor * len(lows)
+        remaining = max(0.0, 1.0 - fixed_mass)
+
+        for r, _ in lows:
+            out[r] = eff_floor
+
+        if not highs:
+            # Everything got floored: distribute uniformly.
+            u = 1.0 / n
+            for r, _ in items:
+                out[r] = u
+            continue
+
+        sum_high = sum(p for _, p in highs)
+        if sum_high <= 0:
+            u = remaining / len(highs)
+            for r, _ in highs:
+                out[r] = u
+        else:
+            for r, p in highs:
+                out[r] = remaining * (p / sum_high)
+
+    return out
+
+
 def prune_and_postprocess(
     binary_rules: Sequence[Tuple[str, str, str]],
     binary_probs: Dict[Tuple[str, str, str], float],
     lex_probs: Dict[Tuple[str, str], float],
     min_prob: float = 1e-5,
     target_binary_rules: int = 20,
+    rule_prob_floor: float = 0.0,
 ) -> Tuple[List[Tuple[str, str, str]], Dict[Tuple[str, str, str], float], Dict[Tuple[str, str], float]]:
     binary_with_p = [(r, binary_probs.get(r, 0.0)) for r in binary_rules]
     kept = [rp for rp in binary_with_p if rp[1] >= min_prob]
@@ -968,8 +1014,12 @@ def prune_and_postprocess(
     final_rules = [r for r, _ in kept]
     final_binary_probs = {r: max(binary_probs.get(r, 0.0), min_prob) for r in final_rules}
     final_binary_probs = _normalize_rule_probs_binary(final_binary_probs)
+    final_binary_probs = _apply_lhs_probability_floor(final_binary_probs, rule_prob_floor)
+    final_binary_probs = _normalize_rule_probs_binary(final_binary_probs)
 
     final_lex_probs = {r: max(p, min_prob) for r, p in lex_probs.items()}
+    final_lex_probs = _normalize_rule_probs_lex(final_lex_probs)
+    final_lex_probs = _apply_lhs_probability_floor(final_lex_probs, rule_prob_floor)
     final_lex_probs = _normalize_rule_probs_lex(final_lex_probs)
 
     return final_rules, final_binary_probs, final_lex_probs

@@ -184,6 +184,7 @@ def solve_task2(args: argparse.Namespace) -> None:
         lex_probs,
         min_prob=args.min_rule_prob,
         target_binary_rules=args.num_binary_rules,
+        rule_prob_floor=args.rule_prob_floor,
     )
 
     covered, total, cov_ratio = cyk_coverage(
@@ -254,17 +255,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--enable-split-recursion", action="store_true", default=True)
     p.add_argument("--disable-split-recursion", dest="enable_split_recursion", action="store_false")
 
-    p.add_argument("--lex-alpha", type=float, default=0.1)
+    p.add_argument("--lex-alpha", type=float, default=0.5)
     p.add_argument("--em-iters", type=int, default=10)
     p.add_argument("--em-tol", type=float, default=1e-4)
     p.add_argument("--max-em-sentences", type=int, default=4000)
     p.add_argument("--max-sent-len-for-em", type=int, default=12)
-    p.add_argument("--init-rule-smoothing", type=float, default=1.0)
+    p.add_argument("--init-rule-smoothing", type=float, default=2.0)
 
     p.add_argument("--max-coverage-sentences", type=int, default=1000)
     p.add_argument("--max-sent-len-for-coverage", type=int, default=16)
 
     p.add_argument("--min-rule-prob", type=float, default=1e-5)
+    p.add_argument("--rule-prob-floor", type=float, default=0.02)
     p.add_argument("--progress", dest="progress", action="store_true", default=True)
     p.add_argument("--no-progress", dest="progress", action="store_false")
     return p
