@@ -11,10 +11,11 @@ def solve_task1(checkpoint_path, output_path, num_samples=1000, device='cpu'):
     with tempfile.NamedTemporaryFile(mode='w+', delete=False) as tmp_file:
         tmp_path = tmp_file.name
 
+    import sys
     cmd = [
-        "python", "code/sampling.py", 
-        checkpoint_path, 
-        "--num-samples", str(num_samples), 
+        sys.executable, "code/sampling.py",
+        checkpoint_path,
+        "--num-samples", str(num_samples),
         "--output-file", tmp_path,
         "--device", device
     ]

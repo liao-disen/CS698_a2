@@ -6,6 +6,8 @@ It reports average log-probability assigned by your PCFG to sampled strings.
 
 import argparse
 import subprocess
+import os
+import sys
 import tempfile
 from pathlib import Path
 
@@ -17,7 +19,7 @@ def sample_strings(script_dir: Path, checkpoint: str, num_samples: int, device: 
         out = Path(tf.name)
 
     cmd = [
-        "python",
+        sys.executable,
         str(script_dir / "sampling.py"),
         checkpoint,
         "--num-samples",
@@ -43,8 +45,10 @@ def main():
     args = p.parse_args()
 
     script_dir = Path(__file__).resolve().parent
+    # Make checkpoint path absolute from the script's perspective
+    checkpoint_abs_path = os.path.abspath(os.path.join(script_dir.parent, args.checkpoint))
 
-    model_samples = sample_strings(script_dir, args.checkpoint, args.num_samples, args.device)
+    model_samples = sample_strings(script_dir, checkpoint_abs_path, args.num_samples, args.device)
 
     g = PCFG()
     g.load_csv(args.pcfg)
