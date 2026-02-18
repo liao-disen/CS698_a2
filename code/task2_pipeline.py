@@ -677,6 +677,30 @@ def _normalize_rule_probs_lex(lex_probs: Dict[Tuple[str, str], float]) -> Dict[T
     return out
 
 
+def _normalize_rule_probs_joint(
+    binary_probs: Dict[Tuple[str, str, str], float],
+    lex_probs: Dict[Tuple[str, str], float],
+) -> Tuple[Dict[Tuple[str, str, str], float], Dict[Tuple[str, str], float]]:
+    """Proper PCFG normalization: for each LHS, binary+lexical mass sums to 1."""
+    by_lhs = defaultdict(float)
+    for (lhs, _, _), p in binary_probs.items():
+        by_lhs[lhs] += p
+    for (lhs, _), p in lex_probs.items():
+        by_lhs[lhs] += p
+
+    out_bin = {}
+    for r, p in binary_probs.items():
+        z = by_lhs[r[0]]
+        out_bin[r] = p / z if z > 0 else 0.0
+
+    out_lex = {}
+    for r, p in lex_probs.items():
+        z = by_lhs[r[0]]
+        out_lex[r] = p / z if z > 0 else 0.0
+
+    return out_bin, out_lex
+
+
 def _sentence_inside_outside(
     sent: Sequence[str],
     binary_rules: Sequence[Tuple[str, str, str]],
@@ -698,16 +722,21 @@ def _sentence_inside_outside(
 
     inside = defaultdict(lambda: float("-inf"))
 
-    # lexical spans
+    # lexical spans (indexed by word for efficiency)
+    lex_by_word = defaultdict(list)
+    for (lhs, w), p in lex_probs.items():
+        if p > 0.0:
+            lex_by_word[w].append((lhs, p))
+
     for i, w in enumerate(sent):
-        for A in symbols:
-            p = lex_probs.get((A, w), 0.0)
-            if p > 0:
-                inside[(i, i + 1, A)] = math.log(p)
+        for lhs, p in lex_by_word.get(w, []):
+            inside[(i, i + 1, lhs)] = math.log(p)
 
     by_rhs = defaultdict(list)
+    by_lhs_rules = defaultdict(list)
     for r in binary_rules:
         by_rhs[(r[1], r[2])].append(r)
+        by_lhs_rules[r[0]].append(r)
 
     def logsumexp_pair(a: float, b: float) -> float:
         if a == float("-inf"):
@@ -746,27 +775,28 @@ def _sentence_inside_outside(
     for span in range(n, 0, -1):
         for i in range(0, n - span + 1):
             j = i + span
-            for (lhs, b, c) in binary_rules:
+            # only expand LHS symbols that actually have outside mass on this span
+            active_lhs = [A for A in symbols if outside[(i, j, A)] != float("-inf")]
+            for lhs in active_lhs:
                 o = outside[(i, j, lhs)]
-                if o == float("-inf"):
-                    continue
-                p = binary_probs.get((lhs, b, c), 0.0)
-                if p <= 0:
-                    continue
-                lp = math.log(p)
-                for k in range(i + 1, j):
-                    ib = inside[(i, k, b)]
-                    ic = inside[(k, j, c)]
-                    if ib != float("-inf") and ic != float("-inf"):
-                        # contribute to left child
-                        left_val = o + lp + ic
-                        prev = outside[(i, k, b)]
-                        outside[(i, k, b)] = logsumexp_pair(prev, left_val)
+                for (_lhs, b, c) in by_lhs_rules.get(lhs, []):
+                    p = binary_probs.get((lhs, b, c), 0.0)
+                    if p <= 0:
+                        continue
+                    lp = math.log(p)
+                    for k in range(i + 1, j):
+                        ib = inside[(i, k, b)]
+                        ic = inside[(k, j, c)]
+                        if ib != float("-inf") and ic != float("-inf"):
+                            # contribute to left child
+                            left_val = o + lp + ic
+                            prev = outside[(i, k, b)]
+                            outside[(i, k, b)] = logsumexp_pair(prev, left_val)
 
-                        # contribute to right child
-                        right_val = o + lp + ib
-                        prev = outside[(k, j, c)]
-                        outside[(k, j, c)] = logsumexp_pair(prev, right_val)
+                            # contribute to right child
+                            right_val = o + lp + ib
+                            prev = outside[(k, j, c)]
+                            outside[(k, j, c)] = logsumexp_pair(prev, right_val)
 
     return log_z, dict(inside), dict(outside)
 
@@ -856,28 +886,31 @@ def run_inside_outside_em(
             history.append(float("-inf"))
             break
 
-        # M-step
-        by_lhs_bin = defaultdict(float)
-        by_lhs_lex = defaultdict(float)
-
-        for r, c in expected_bin.items():
-            by_lhs_bin[r[0]] += c
-        for r, c in expected_lex.items():
-            by_lhs_lex[r[0]] += c
-
-        # Keep support fixed to initial rule sets; add tiny smoothing for stability.
+        # M-step (proper PCFG): for each LHS, binary+lexical masses jointly sum to 1.
+        smooth = 1e-8
+        lhs_rule_count = defaultdict(int)
         for r in binary_probs.keys():
-            c = expected_bin.get(r, 0.0) + 1e-8
-            z = by_lhs_bin[r[0]] + 1e-8 * sum(1 for rr in binary_probs.keys() if rr[0] == r[0])
+            lhs_rule_count[r[0]] += 1
+        for r in lex_probs.keys():
+            lhs_rule_count[r[0]] += 1
+
+        lhs_total = defaultdict(float)
+        for r, c in expected_bin.items():
+            lhs_total[r[0]] += c
+        for r, c in expected_lex.items():
+            lhs_total[r[0]] += c
+
+        for r in binary_probs.keys():
+            c = expected_bin.get(r, 0.0) + smooth
+            z = lhs_total[r[0]] + smooth * lhs_rule_count[r[0]]
             binary_probs[r] = c / z if z > 0 else binary_probs[r]
 
         for r in lex_probs.keys():
-            c = expected_lex.get(r, 0.0) + 1e-8
-            z = by_lhs_lex[r[0]] + 1e-8 * sum(1 for rr in lex_probs.keys() if rr[0] == r[0])
+            c = expected_lex.get(r, 0.0) + smooth
+            z = lhs_total[r[0]] + smooth * lhs_rule_count[r[0]]
             lex_probs[r] = c / z if z > 0 else lex_probs[r]
 
-        binary_probs = _normalize_rule_probs_binary(binary_probs)
-        lex_probs = _normalize_rule_probs_lex(lex_probs)
+        binary_probs, lex_probs = _normalize_rule_probs_joint(binary_probs, lex_probs)
 
         avg_ll = total_log_likelihood / used
         history.append(avg_ll)
@@ -1013,14 +1046,14 @@ def prune_and_postprocess(
 
     final_rules = [r for r, _ in kept]
     final_binary_probs = {r: max(binary_probs.get(r, 0.0), min_prob) for r in final_rules}
-    final_binary_probs = _normalize_rule_probs_binary(final_binary_probs)
-    final_binary_probs = _apply_lhs_probability_floor(final_binary_probs, rule_prob_floor)
-    final_binary_probs = _normalize_rule_probs_binary(final_binary_probs)
-
     final_lex_probs = {r: max(p, min_prob) for r, p in lex_probs.items()}
-    final_lex_probs = _normalize_rule_probs_lex(final_lex_probs)
+
+    final_binary_probs, final_lex_probs = _normalize_rule_probs_joint(final_binary_probs, final_lex_probs)
+
+    final_binary_probs = _apply_lhs_probability_floor(final_binary_probs, rule_prob_floor)
     final_lex_probs = _apply_lhs_probability_floor(final_lex_probs, rule_prob_floor)
-    final_lex_probs = _normalize_rule_probs_lex(final_lex_probs)
+
+    final_binary_probs, final_lex_probs = _normalize_rule_probs_joint(final_binary_probs, final_lex_probs)
 
     return final_rules, final_binary_probs, final_lex_probs
 
