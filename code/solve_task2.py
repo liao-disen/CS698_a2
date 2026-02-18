@@ -208,34 +208,34 @@ def build_nonterminal_rules():
     # Tuned for sampled distribution: NP/PP-heavy with optional leading ADJ/ADV and modal auxiliaries.
     rules = [
         # S expansions
-        {"LHS": "S", "RHS": "NP VP", "Probability": 0.44},
-        {"LHS": "S", "RHS": "NP VINTR", "Probability": 0.18},
+        {"LHS": "S", "RHS": "NP VP", "Probability": 0.56},
+        {"LHS": "S", "RHS": "NP VINTR", "Probability": 0.16},
         {"LHS": "S", "RHS": "NOUN VP", "Probability": 0.08},
-        {"LHS": "S", "RHS": "NP VTR", "Probability": 0.04},
-        {"LHS": "S", "RHS": "ADJ S", "Probability": 0.10},
-        {"LHS": "S", "RHS": "ADV S", "Probability": 0.10},
-        {"LHS": "S", "RHS": "S ADV", "Probability": 0.04},
-        {"LHS": "S", "RHS": "NP AUXVP", "Probability": 0.02},
+        {"LHS": "S", "RHS": "NP VTR", "Probability": 0.03},
+        {"LHS": "S", "RHS": "ADJ S", "Probability": 0.06},
+        {"LHS": "S", "RHS": "ADV S", "Probability": 0.06},
+        {"LHS": "S", "RHS": "S ADV", "Probability": 0.02},
+        {"LHS": "S", "RHS": "NP AUXVP", "Probability": 0.03},
 
         # auxiliary bridge
         {"LHS": "AUXVP", "RHS": "AUX VP", "Probability": 1.00},
 
         # NP structure
-        {"LHS": "NP", "RHS": "DET NOUN", "Probability": 0.44},
-        {"LHS": "NP", "RHS": "NUM NOUN", "Probability": 0.17},
-        {"LHS": "NP", "RHS": "DET NBAR", "Probability": 0.12},
-        {"LHS": "NP", "RHS": "NP PP", "Probability": 0.27},
+        {"LHS": "NP", "RHS": "DET NOUN", "Probability": 0.52},
+        {"LHS": "NP", "RHS": "NUM NOUN", "Probability": 0.16},
+        {"LHS": "NP", "RHS": "DET NBAR", "Probability": 0.10},
+        {"LHS": "NP", "RHS": "NP PP", "Probability": 0.22},
         {"LHS": "NBAR", "RHS": "ADJ NOUN", "Probability": 1.00},
 
         # PP
         {"LHS": "PP", "RHS": "PREP NP", "Probability": 1.00},
 
         # VP structure
-        {"LHS": "VP", "RHS": "VTR NP", "Probability": 0.47},
-        {"LHS": "VP", "RHS": "VTR PP", "Probability": 0.10},
-        {"LHS": "VP", "RHS": "VINTR PP", "Probability": 0.17},
-        {"LHS": "VP", "RHS": "VP PP", "Probability": 0.20},
-        {"LHS": "VP", "RHS": "VP ADV", "Probability": 0.06},
+        {"LHS": "VP", "RHS": "VTR NP", "Probability": 0.57},
+        {"LHS": "VP", "RHS": "VTR PP", "Probability": 0.09},
+        {"LHS": "VP", "RHS": "VINTR PP", "Probability": 0.12},
+        {"LHS": "VP", "RHS": "VP PP", "Probability": 0.17},
+        {"LHS": "VP", "RHS": "VP ADV", "Probability": 0.05},
     ]
 
     assert len(rules) == 20
