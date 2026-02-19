@@ -1,3 +1,6 @@
 .DS_Store
 .venv/
 code/.DS_Store
+
+# Generated artifacts (Task 2 pipeline)
+code/task2/artifacts/
