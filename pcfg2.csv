@@ -1,221 +1,226 @@
 ID,LHS,LHS Type,RHS,Probability
-0,S,nonterminal,PT_00 PT_07,0.196035
-1,S,nonterminal,PT_00 PT_04,0.138349
-2,S,nonterminal,PT_06 PT_00,0.020000
-3,S,nonterminal,S PT_10,0.041457
-4,S,nonterminal,S PT_09,0.051968
-5,S,nonterminal,S S,0.167155
-6,S,nonterminal,S PT_06,0.040186
-7,S,nonterminal,S PT_05,0.036398
-8,S,nonterminal,S PT_11,0.024524
-9,S,nonterminal,PT_03 S,0.022772
-10,S,nonterminal,PT_06 S,0.061062
-11,S,nonterminal,S PT_08,0.020000
-12,S,nonterminal,PT_00 S,0.020000
-13,S,nonterminal,PT_00 PT_02,0.020000
-14,S,nonterminal,S PT_00,0.020000
-15,S,nonterminal,S PT_07,0.020000
-16,S,nonterminal,PT_07 S,0.020000
-17,S,nonterminal,PT_04 S,0.020000
-18,S,nonterminal,PT_05 S,0.040093
-19,S,nonterminal,PT_07 PT_01,0.020000
-20,PT_00,preterminal,a,0.253309
-21,PT_00,preterminal,eight,0.020000
-22,PT_00,preterminal,five,0.020000
-23,PT_00,preterminal,four,0.021891
-24,PT_00,preterminal,nine,0.020000
-25,PT_00,preterminal,one,0.028145
-26,PT_00,preterminal,seven,0.020000
-27,PT_00,preterminal,six,0.020000
-28,PT_00,preterminal,ten,0.020000
-29,PT_00,preterminal,the,0.359636
-30,PT_00,preterminal,this,0.140727
-31,PT_00,preterminal,three,0.020000
-32,PT_00,preterminal,two,0.032836
-33,PT_00,preterminal,very,0.023455
-34,PT_01,preterminal,cried,0.250000
-35,PT_01,preterminal,paused,0.250000
-36,PT_01,preterminal,pauses,0.250000
-37,PT_01,preterminal,traveled,0.250000
-38,PT_02,preterminal,bridges,0.020000
-39,PT_02,preterminal,stories,0.980000
-40,PT_03,preterminal,ancient,0.020000
-41,PT_03,preterminal,big,0.048205
-42,PT_03,preterminal,brave,0.048205
-43,PT_03,preterminal,bright,0.096410
-44,PT_03,preterminal,calm,0.048205
-45,PT_03,preterminal,careful,0.072308
-46,PT_03,preterminal,eager,0.048205
-47,PT_03,preterminal,gentle,0.020000
-48,PT_03,preterminal,happy,0.048205
-49,PT_03,preterminal,honest,0.024103
-50,PT_03,preterminal,kind,0.024103
-51,PT_03,preterminal,modern,0.024103
-52,PT_03,preterminal,noisy,0.072308
-53,PT_03,preterminal,quick,0.096410
-54,PT_03,preterminal,quiet,0.020000
-55,PT_03,preterminal,serious,0.048205
-56,PT_03,preterminal,slow,0.096410
-57,PT_03,preterminal,small,0.048205
-58,PT_03,preterminal,smart,0.072308
-59,PT_03,preterminal,wild,0.024103
-60,PT_04,preterminal,artist,0.020000
-61,PT_04,preterminal,bridge,0.020000
-62,PT_04,preterminal,car,0.064574
-63,PT_04,preterminal,cat,0.100897
-64,PT_04,preterminal,city,0.068610
-65,PT_04,preterminal,doctor,0.020000
-66,PT_04,preterminal,dog,0.080717
-67,PT_04,preterminal,forest,0.020000
-68,PT_04,preterminal,garden,0.052466
-69,PT_04,preterminal,idea,0.044395
-70,PT_04,preterminal,library,0.044395
-71,PT_04,preterminal,machine,0.040359
-72,PT_04,preterminal,music,0.040359
-73,PT_04,preterminal,planet,0.036323
-74,PT_04,preterminal,professor,0.064574
-75,PT_04,preterminal,project,0.084753
-76,PT_04,preterminal,river,0.080717
-77,PT_04,preterminal,story,0.020000
-78,PT_04,preterminal,student,0.064574
-79,PT_04,preterminal,teacher,0.032287
-80,PT_05,preterminal,admire,0.021429
-81,PT_05,preterminal,admired,0.026786
-82,PT_05,preterminal,admires,0.016071
-83,PT_05,preterminal,build,0.032143
-84,PT_05,preterminal,builds,0.037500
-85,PT_05,preterminal,built,0.026786
-86,PT_05,preterminal,call,0.020000
-87,PT_05,preterminal,called,0.020000
-88,PT_05,preterminal,calls,0.016071
-89,PT_05,preterminal,chase,0.021429
-90,PT_05,preterminal,chased,0.026786
-91,PT_05,preterminal,chases,0.053571
-92,PT_05,preterminal,find,0.016071
-93,PT_05,preterminal,finds,0.020000
-94,PT_05,preterminal,follow,0.020000
-95,PT_05,preterminal,followed,0.021429
-96,PT_05,preterminal,follows,0.020000
-97,PT_05,preterminal,found,0.020000
-98,PT_05,preterminal,help,0.016071
-99,PT_05,preterminal,helped,0.021429
-100,PT_05,preterminal,helps,0.020000
-101,PT_05,preterminal,meet,0.020000
-102,PT_05,preterminal,meets,0.020000
-103,PT_05,preterminal,met,0.020000
-104,PT_05,preterminal,move,0.020000
-105,PT_05,preterminal,moved,0.020000
-106,PT_05,preterminal,moves,0.020000
-107,PT_05,preterminal,praise,0.020000
-108,PT_05,preterminal,praised,0.020000
-109,PT_05,preterminal,praises,0.020000
-110,PT_05,preterminal,prefer,0.020000
-111,PT_05,preterminal,preferred,0.016071
-112,PT_05,preterminal,prefers,0.016071
-113,PT_05,preterminal,saw,0.037500
-114,PT_05,preterminal,see,0.016071
-115,PT_05,preterminal,sees,0.032143
-116,PT_05,preterminal,solve,0.021429
-117,PT_05,preterminal,solved,0.020000
-118,PT_05,preterminal,solves,0.016071
-119,PT_05,preterminal,visit,0.021429
-120,PT_05,preterminal,visited,0.021429
-121,PT_05,preterminal,visits,0.020000
-122,PT_05,preterminal,watch,0.032143
-123,PT_05,preterminal,watched,0.020000
-124,PT_05,preterminal,watches,0.016071
-125,PT_06,preterminal,at,0.154696
-126,PT_06,preterminal,by,0.082873
-127,PT_06,preterminal,from,0.049724
-128,PT_06,preterminal,in,0.237569
-129,PT_06,preterminal,near,0.033149
-130,PT_06,preterminal,on,0.204420
-131,PT_06,preterminal,quite,0.066298
-132,PT_06,preterminal,really,0.027624
-133,PT_06,preterminal,with,0.143646
-134,PT_07,preterminal,artists,0.028916
-135,PT_07,preterminal,cars,0.083855
-136,PT_07,preterminal,cats,0.069398
-137,PT_07,preterminal,cities,0.089639
-138,PT_07,preterminal,doctors,0.020000
-139,PT_07,preterminal,dogs,0.098313
-140,PT_07,preterminal,forests,0.020000
-141,PT_07,preterminal,gardens,0.052048
-142,PT_07,preterminal,ideas,0.086747
-143,PT_07,preterminal,libraries,0.054940
-144,PT_07,preterminal,machines,0.031807
-145,PT_07,preterminal,planets,0.031807
-146,PT_07,preterminal,professors,0.092530
-147,PT_07,preterminal,projects,0.069398
-148,PT_07,preterminal,rivers,0.049157
-149,PT_07,preterminal,songs,0.040482
-150,PT_07,preterminal,students,0.054940
-151,PT_07,preterminal,teachers,0.026024
-152,PT_08,preterminal,can,0.341818
-153,PT_08,preterminal,could,0.085455
-154,PT_08,preterminal,may,0.020000
-155,PT_08,preterminal,might,0.020000
-156,PT_08,preterminal,should,0.170909
-157,PT_08,preterminal,will,0.020000
-158,PT_08,preterminal,would,0.341818
-159,PT_09,preterminal,arrive,0.040930
-160,PT_09,preterminal,arrives,0.051163
-161,PT_09,preterminal,collapse,0.020465
-162,PT_09,preterminal,collapses,0.020465
-163,PT_09,preterminal,cough,0.020465
-164,PT_09,preterminal,coughs,0.020465
-165,PT_09,preterminal,cries,0.020465
-166,PT_09,preterminal,cry,0.020000
-167,PT_09,preterminal,dance,0.030698
-168,PT_09,preterminal,dances,0.061395
-169,PT_09,preterminal,depart,0.061395
-170,PT_09,preterminal,departs,0.061395
-171,PT_09,preterminal,laugh,0.020465
-172,PT_09,preterminal,laughs,0.061395
-173,PT_09,preterminal,pause,0.020000
-174,PT_09,preterminal,shout,0.020465
-175,PT_09,preterminal,shouts,0.020465
-176,PT_09,preterminal,sleep,0.040930
-177,PT_09,preterminal,sleeps,0.081860
-178,PT_09,preterminal,smile,0.061395
-179,PT_09,preterminal,smiles,0.020465
-180,PT_09,preterminal,sneeze,0.020000
-181,PT_09,preterminal,sneezes,0.030698
-182,PT_09,preterminal,travel,0.020000
-183,PT_09,preterminal,travels,0.020000
-184,PT_09,preterminal,wait,0.030698
-185,PT_09,preterminal,waits,0.051163
-186,PT_09,preterminal,wander,0.020000
-187,PT_09,preterminal,wanders,0.030698
-188,PT_10,preterminal,arrived,0.197183
-189,PT_10,preterminal,collapsed,0.028169
-190,PT_10,preterminal,coughed,0.070423
-191,PT_10,preterminal,danced,0.056338
-192,PT_10,preterminal,departed,0.084507
-193,PT_10,preterminal,laughed,0.112676
-194,PT_10,preterminal,shouted,0.056338
-195,PT_10,preterminal,slept,0.112676
-196,PT_10,preterminal,smiled,0.070423
-197,PT_10,preterminal,sneezed,0.042254
-198,PT_10,preterminal,waited,0.056338
-199,PT_10,preterminal,wandered,0.112676
-200,PT_11,preterminal,abroad,0.040952
-201,PT_11,preterminal,ahead,0.020476
-202,PT_11,preterminal,anywhere,0.020476
-203,PT_11,preterminal,away,0.020476
-204,PT_11,preterminal,back,0.020000
-205,PT_11,preterminal,downstairs,0.020000
-206,PT_11,preterminal,elsewhere,0.061429
-207,PT_11,preterminal,everywhere,0.020000
-208,PT_11,preterminal,home,0.061429
-209,PT_11,preterminal,inside,0.061429
-210,PT_11,preterminal,later,0.020000
-211,PT_11,preterminal,nearby,0.061429
-212,PT_11,preterminal,outside,0.102381
-213,PT_11,preterminal,somewhere,0.020000
-214,PT_11,preterminal,soon,0.020000
-215,PT_11,preterminal,today,0.102381
-216,PT_11,preterminal,tomorrow,0.102381
-217,PT_11,preterminal,tonight,0.020000
-218,PT_11,preterminal,upstairs,0.102381
-219,PT_11,preterminal,yesterday,0.102381
+0,NT_1,nonterminal,NT_2 NT_1,1.000000
+1,NT_10,nonterminal,NT_2 PT_12,1.000000
+2,NT_11,nonterminal,PT_23 PT_27,1.000000
+3,NT_12,nonterminal,PT_26 PT_11,1.000000
+4,NT_13,nonterminal,PT_11 PT_23,1.000000
+5,NT_14,nonterminal,PT_23 PT_27,1.000000
+6,NT_15,nonterminal,PT_15 NT_15,1.000000
+7,NT_16,nonterminal,NT_13 NT_16,1.000000
+8,NT_17,nonterminal,PT_27 NT_17,1.000000
+9,NT_18,nonterminal,PT_23 PT_26,1.000000
+10,NT_19,nonterminal,NT_13 NT_19,1.000000
+11,NT_2,nonterminal,PT_27 PT_11,1.000000
+12,NT_20,nonterminal,NT_13 NT_20,1.000000
+13,NT_21,nonterminal,NT_21 PT_24,1.000000
+14,NT_22,nonterminal,PT_27 NT_22,1.000000
+15,NT_23,nonterminal,PT_23 PT_27,1.000000
+16,NT_24,nonterminal,NT_13 NT_24,1.000000
+17,NT_3,nonterminal,NT_13 NT_3,1.000000
+18,NT_4,nonterminal,NT_13 NT_4,1.000000
+19,NT_5,nonterminal,PT_23 PT_27,1.000000
+20,NT_6,nonterminal,NT_13 NT_6,1.000000
+21,NT_7,nonterminal,NT_13 NT_7,1.000000
+22,NT_8,nonterminal,PT_23 PT_15,1.000000
+23,NT_9,nonterminal,NT_13 NT_9,1.000000
+24,S,nonterminal,NT_11 NT_21,1.000000
+25,PT_1,preterminal,artist,0.164190
+26,PT_1,preterminal,machine,0.283806
+27,PT_1,preterminal,rivers,0.552003
+28,PT_10,preterminal,dogs,0.525867
+29,PT_10,preterminal,garden,0.160244
+30,PT_10,preterminal,songs,0.313888
+31,PT_11,preterminal,car,0.094717
+32,PT_11,preterminal,cars,0.138078
+33,PT_11,preterminal,cats,0.172711
+34,PT_11,preterminal,forest,0.018951
+35,PT_11,preterminal,gardens,0.093603
+36,PT_11,preterminal,libraries,0.080511
+37,PT_11,preterminal,machines,0.072433
+38,PT_11,preterminal,planets,0.060734
+39,PT_11,preterminal,professors,0.150613
+40,PT_11,preterminal,projects,0.117651
+41,PT_12,preterminal,can,0.611216
+42,PT_12,preterminal,would,0.388784
+43,PT_13,preterminal,depart,0.461831
+44,PT_13,preterminal,travel,0.071266
+45,PT_13,preterminal,wander,0.466903
+46,PT_14,preterminal,admire,0.044180
+47,PT_14,preterminal,admired,0.043760
+48,PT_14,preterminal,admires,0.050699
+49,PT_14,preterminal,build,0.056167
+50,PT_14,preterminal,builds,0.053433
+51,PT_14,preterminal,calls,0.016633
+52,PT_14,preterminal,chase,0.057639
+53,PT_14,preterminal,chased,0.055325
+54,PT_14,preterminal,find,0.032405
+55,PT_14,preterminal,finds,0.038713
+56,PT_14,preterminal,followed,0.038082
+57,PT_14,preterminal,follows,0.039134
+58,PT_14,preterminal,found,0.034087
+59,PT_14,preterminal,help,0.020839
+60,PT_14,preterminal,helps,0.024414
+61,PT_14,preterminal,meet,0.009484
+62,PT_14,preterminal,prefer,0.024624
+63,PT_14,preterminal,prefers,0.035349
+64,PT_14,preterminal,saw,0.065209
+65,PT_14,preterminal,see,0.063316
+66,PT_14,preterminal,solve,0.041236
+67,PT_14,preterminal,solved,0.041867
+68,PT_14,preterminal,solves,0.043550
+69,PT_14,preterminal,visited,0.027568
+70,PT_14,preterminal,watch,0.042288
+71,PT_15,preterminal,quite,0.323366
+72,PT_15,preterminal,really,0.172920
+73,PT_15,preterminal,very,0.503714
+74,PT_16,preterminal,could,0.396889
+75,PT_16,preterminal,might,0.151029
+76,PT_16,preterminal,should,0.452082
+77,PT_17,preterminal,bright,0.203400
+78,PT_17,preterminal,calm,0.158608
+79,PT_17,preterminal,honest,0.054094
+80,PT_17,preterminal,quick,0.296428
+81,PT_17,preterminal,quiet,0.028827
+82,PT_17,preterminal,small,0.249340
+83,PT_17,preterminal,wild,0.009303
+84,PT_18,preterminal,built,0.100612
+85,PT_18,preterminal,call,0.028902
+86,PT_18,preterminal,called,0.032401
+87,PT_18,preterminal,chases,0.125973
+88,PT_18,preterminal,follow,0.075689
+89,PT_18,preterminal,helped,0.049891
+90,PT_18,preterminal,meets,0.025842
+91,PT_18,preterminal,met,0.027591
+92,PT_18,preterminal,move,0.012724
+93,PT_18,preterminal,moved,0.013161
+94,PT_18,preterminal,moves,0.010538
+95,PT_18,preterminal,praise,0.008789
+96,PT_18,preterminal,praised,0.008789
+97,PT_18,preterminal,praises,0.013599
+98,PT_18,preterminal,preferred,0.055138
+99,PT_18,preterminal,sees,0.136467
+100,PT_18,preterminal,visit,0.054263
+101,PT_18,preterminal,visits,0.053826
+102,PT_18,preterminal,watched,0.082685
+103,PT_18,preterminal,watches,0.083122
+104,PT_19,preterminal,ahead,0.129516
+105,PT_19,preterminal,away,0.156480
+106,PT_19,preterminal,home,0.150189
+107,PT_19,preterminal,soon,0.025256
+108,PT_19,preterminal,tomorrow,0.246360
+109,PT_19,preterminal,yesterday,0.292198
+110,PT_2,preterminal,sleep,1.000000
+111,PT_20,preterminal,sneezes,0.397037
+112,PT_20,preterminal,waits,0.602963
+113,PT_21,preterminal,ancient,0.131269
+114,PT_21,preterminal,brave,0.104263
+115,PT_21,preterminal,eager,0.096547
+116,PT_21,preterminal,gentle,0.058931
+117,PT_21,preterminal,happy,0.143808
+118,PT_21,preterminal,kind,0.039641
+119,PT_21,preterminal,slow,0.215181
+120,PT_21,preterminal,smart,0.210359
+121,PT_22,preterminal,dances,0.360449
+122,PT_22,preterminal,laughs,0.590936
+123,PT_22,preterminal,pauses,0.048615
+124,PT_23,preterminal,at,0.177480
+125,PT_23,preterminal,by,0.108640
+126,PT_23,preterminal,from,0.074778
+127,PT_23,preterminal,in,0.242538
+128,PT_23,preterminal,near,0.036448
+129,PT_23,preterminal,on,0.216412
+130,PT_23,preterminal,with,0.143704
+131,PT_24,preterminal,abroad,0.104400
+132,PT_24,preterminal,back,0.072139
+133,PT_24,preterminal,downstairs,0.108518
+134,PT_24,preterminal,elsewhere,0.045370
+135,PT_24,preterminal,nearby,0.114009
+136,PT_24,preterminal,somewhere,0.063216
+137,PT_24,preterminal,today,0.178530
+138,PT_24,preterminal,tonight,0.159311
+139,PT_24,preterminal,upstairs,0.154506
+140,PT_25,preterminal,big,0.334592
+141,PT_25,preterminal,careful,0.128254
+142,PT_25,preterminal,modern,0.194336
+143,PT_25,preterminal,noisy,0.148483
+144,PT_25,preterminal,serious,0.194336
+145,PT_26,preterminal,eight,0.057641
+146,PT_26,preterminal,five,0.097915
+147,PT_26,preterminal,four,0.126250
+148,PT_26,preterminal,nine,0.038220
+149,PT_26,preterminal,one,0.190879
+150,PT_26,preterminal,seven,0.068784
+151,PT_26,preterminal,six,0.093457
+152,PT_26,preterminal,ten,0.019755
+153,PT_26,preterminal,three,0.139303
+154,PT_26,preterminal,two,0.167797
+155,PT_27,preterminal,a,0.337353
+156,PT_27,preterminal,the,0.497107
+157,PT_27,preterminal,this,0.165539
+158,PT_28,preterminal,everywhere,0.155306
+159,PT_28,preterminal,inside,0.844694
+160,PT_29,preterminal,anywhere,0.208591
+161,PT_29,preterminal,later,0.068663
+162,PT_29,preterminal,outside,0.722747
+163,PT_3,preterminal,bridge,0.013677
+164,PT_3,preterminal,dog,0.292635
+165,PT_3,preterminal,planet,0.101461
+166,PT_3,preterminal,professor,0.244950
+167,PT_3,preterminal,project,0.194880
+168,PT_3,preterminal,river,0.152397
+169,PT_30,preterminal,artists,0.054843
+170,PT_30,preterminal,bridges,0.010737
+171,PT_30,preterminal,cat,0.153176
+172,PT_30,preterminal,cities,0.182098
+173,PT_30,preterminal,city,0.130762
+174,PT_30,preterminal,doctor,0.030621
+175,PT_30,preterminal,doctors,0.041828
+176,PT_30,preterminal,forests,0.031585
+177,PT_30,preterminal,stories,0.022185
+178,PT_30,preterminal,story,0.016521
+179,PT_30,preterminal,students,0.210417
+180,PT_30,preterminal,teacher,0.045323
+181,PT_30,preterminal,teachers,0.069906
+182,PT_4,preterminal,may,0.310531
+183,PT_4,preterminal,will,0.689469
+184,PT_5,preterminal,cough,0.186911
+185,PT_5,preterminal,dance,0.228412
+186,PT_5,preterminal,smile,0.153392
+187,PT_5,preterminal,sneeze,0.166161
+188,PT_5,preterminal,wait,0.265124
+189,PT_6,preterminal,arrive,0.259069
+190,PT_6,preterminal,collapse,0.056309
+191,PT_6,preterminal,cry,0.073409
+192,PT_6,preterminal,laugh,0.300599
+193,PT_6,preterminal,pause,0.009894
+194,PT_6,preterminal,shout,0.161353
+195,PT_6,preterminal,smiles,0.139367
+196,PT_7,preterminal,arrives,0.185978
+197,PT_7,preterminal,coughs,0.112575
+198,PT_7,preterminal,departs,0.176374
+199,PT_7,preterminal,shouts,0.124237
+200,PT_7,preterminal,sleeps,0.246347
+201,PT_7,preterminal,travels,0.023393
+202,PT_7,preterminal,wanders,0.131097
+203,PT_8,preterminal,arrived,0.094737
+204,PT_8,preterminal,collapsed,0.027416
+205,PT_8,preterminal,collapses,0.015809
+206,PT_8,preterminal,coughed,0.060380
+207,PT_8,preterminal,cried,0.034148
+208,PT_8,preterminal,cries,0.024166
+209,PT_8,preterminal,danced,0.072220
+210,PT_8,preterminal,departed,0.095434
+211,PT_8,preterminal,laughed,0.117487
+212,PT_8,preterminal,paused,0.009541
+213,PT_8,preterminal,shouted,0.062934
+214,PT_8,preterminal,slept,0.112844
+215,PT_8,preterminal,smiled,0.037398
+216,PT_8,preterminal,sneezed,0.043434
+217,PT_8,preterminal,traveled,0.010702
+218,PT_8,preterminal,waited,0.097755
+219,PT_8,preterminal,wandered,0.083594
+220,PT_9,preterminal,idea,0.191370
+221,PT_9,preterminal,ideas,0.270814
+222,PT_9,preterminal,library,0.123016
+223,PT_9,preterminal,music,0.172618
+224,PT_9,preterminal,student,0.242182

@@ -1,0 +1,6 @@
+{
+  "teacher_pcfg_logprob_corr": 0.9890444955961352,
+  "proxy_tvd": 0.1421063147330889,
+  "num_eval": 1000,
+  "num_binary_rules": 1055
+}
