@@ -1,0 +1,230 @@
+ID,LHS,LHS Type,RHS,Probability
+1,S,nonterminal,NP VP,0.5865412550842534
+2,S,nonterminal,NP V_IN,0.4133134805345729
+3,S,nonterminal,S ADV,3.6316095293434055e-05
+4,S,nonterminal,S PP,3.6316095293434055e-05
+5,NP,nonterminal,DT NN,0.3320753180108877
+6,NP,nonterminal,DT NNS,0.4105428924396899
+7,NP,nonterminal,JJ NN,1.3575704918477891e-05
+8,NP,nonterminal,JJ NNS,1.3575704918477891e-05
+9,NP,nonterminal,DT NP_core,1.3575704918477891e-05
+10,NP_core,nonterminal,JJ NN,0.5
+11,NP_core,nonterminal,JJ NNS,0.5
+12,NP,nonterminal,NP PP,0.1497536009557296
+13,NP,nonterminal,NP ADV,0.074001167510623
+14,VP,nonterminal,V_TR NP,0.7311049210770658
+15,VP,nonterminal,V_IN ADV,0.0006809037449705974
+16,VP,nonterminal,V_IN PP,0.21795109873104304
+17,VP,nonterminal,MD VP_base,0.050201176106468584
+18,VP_base,nonterminal,V_TR NP,0.7392373923739238
+19,VP_base,nonterminal,V_IN ADV,0.0012300123001230013
+20,VP_base,nonterminal,V_IN PP,0.2595325953259533
+21,VP,nonterminal,VP PP,6.190034045187249e-05
+22,PP,nonterminal,P NP,1.0
+23,ADJP,nonterminal,DEG JJ,1.0
+24,NP,nonterminal,ADJP NN,1.3575704918477891e-05
+25,NP,nonterminal,ADJP NNS,1.3575704918477891e-05
+26,S,nonterminal,ADJP VP,3.6316095293434055e-05
+27,S,nonterminal,ADV S,3.6316095293434055e-05
+28,NP,nonterminal,ADJP NP,0.03354556685355887
+29,NP,nonterminal,NP NP,1.3575704918477891e-05
+30,ADV,preterminal,abroad,0.05604719764011799
+31,ADV,preterminal,ahead,0.03896910417637013
+32,ADV,preterminal,anywhere,0.017233348858872843
+33,ADV,preterminal,away,0.051389535786368574
+34,ADV,preterminal,back,0.020338456761372456
+35,ADV,preterminal,downstairs,0.05294208973761838
+36,ADV,preterminal,elsewhere,0.021891010712622262
+37,ADV,preterminal,everywhere,0.014128240956373233
+38,ADV,preterminal,home,0.04828442788386896
+39,ADV,preterminal,inside,0.07157273715261606
+40,ADV,preterminal,later,0.0017078093463747865
+41,ADV,preterminal,nearby,0.04983698183511877
+42,ADV,preterminal,outside,0.06846762925011644
+43,ADV,preterminal,really,0.10728147803136158
+44,ADV,preterminal,somewhere,0.02344356466387207
+45,ADV,preterminal,soon,0.004812917248874398
+46,ADV,preterminal,today,0.08865083061636392
+47,ADV,preterminal,tomorrow,0.0839931687626145
+48,ADV,preterminal,tonight,0.05294208973761838
+49,ADV,preterminal,upstairs,0.042074212078869744
+50,ADV,preterminal,yesterday,0.0839931687626145
+51,DEG,preterminal,quite,0.4024246008279125
+52,DEG,preterminal,very,0.5975753991720876
+53,DT,preterminal,a,0.2708297849279222
+54,DT,preterminal,eight,0.007912298902187882
+55,DT,preterminal,five,0.015809113853490854
+56,DT,preterminal,four,0.023396249787095674
+57,DT,preterminal,nine,0.006828422340244337
+58,DT,preterminal,one,0.03206726228264404
+59,DT,preterminal,seven,0.014880076800396387
+60,DT,preterminal,six,0.017202669433132558
+61,DT,preterminal,ten,0.002802595110168311
+62,DT,preterminal,the,0.41374665159562113
+63,DT,preterminal,this,0.13596457272037532
+64,DT,preterminal,three,0.02664787947292631
+65,DT,preterminal,two,0.03191242277379496
+66,JJ,preterminal,ancient,0.05334645669291339
+67,JJ,preterminal,big,0.07303149606299213
+68,JJ,preterminal,brave,0.04153543307086614
+69,JJ,preterminal,bright,0.07106299212598426
+70,JJ,preterminal,calm,0.04744094488188977
+71,JJ,preterminal,careful,0.051377952755905516
+72,JJ,preterminal,eager,0.02775590551181102
+73,JJ,preterminal,gentle,0.029724409448818895
+74,JJ,preterminal,happy,0.06515748031496063
+75,JJ,preterminal,honest,0.0218503937007874
+76,JJ,preterminal,kind,0.015944881889763778
+77,JJ,preterminal,modern,0.04940944881889764
+78,JJ,preterminal,noisy,0.037598425196850395
+79,JJ,preterminal,quick,0.07696850393700788
+80,JJ,preterminal,quiet,0.012007874015748031
+81,JJ,preterminal,serious,0.06318897637795276
+82,JJ,preterminal,slow,0.07696850393700788
+83,JJ,preterminal,small,0.09665354330708661
+84,JJ,preterminal,smart,0.0828740157480315
+85,JJ,preterminal,wild,0.006102362204724409
+86,MD,preterminal,can,0.22620266120777893
+87,MD,preterminal,could,0.13408393039918115
+88,MD,preterminal,may,0.13408393039918115
+89,MD,preterminal,might,0.07267144319344933
+90,MD,preterminal,should,0.13408393039918115
+91,MD,preterminal,will,0.18526100307062437
+92,MD,preterminal,would,0.11361310133060389
+93,NN,preterminal,artist,0.020463280357328348
+94,NN,preterminal,bridge,0.00453585402167515
+95,NN,preterminal,car,0.07066929815449603
+96,NN,preterminal,cat,0.08694297288875039
+97,NN,preterminal,city,0.06893805616149025
+98,NN,preterminal,doctor,0.01630829957411447
+99,NN,preterminal,dog,0.08694297288875039
+100,NN,preterminal,forest,0.013538312385305219
+101,NN,preterminal,garden,0.03639070669298154
+102,NN,preterminal,idea,0.05855060420345556
+103,NN,preterminal,library,0.04643191025241508
+104,NN,preterminal,machine,0.030158235518160728
+105,NN,preterminal,music,0.05093313943423012
+106,NN,preterminal,planet,0.029811987119559572
+107,NN,preterminal,professor,0.07101554655309719
+108,NN,preterminal,project,0.06028184619646134
+109,NN,preterminal,river,0.04193068107060005
+110,NN,preterminal,songs,0.0852117308957446
+111,NN,preterminal,story,0.010075828399293654
+112,NN,preterminal,student,0.08278799210553651
+113,NN,preterminal,teacher,0.02808074512655379
+114,NNS,preterminal,artists,0.02421121511280548
+115,NNS,preterminal,bridges,0.0034424876952402626
+116,NNS,preterminal,cars,0.07485276963782754
+117,NNS,preterminal,cats,0.09732851574724743
+118,NNS,preterminal,cities,0.08680190048081027
+119,NNS,preterminal,doctors,0.01852115280662323
+120,NNS,preterminal,dogs,0.0964750064013201
+121,NNS,preterminal,forests,0.016814134114768557
+122,NNS,preterminal,gardens,0.050670004836552957
+123,NNS,preterminal,ideas,0.0737147571765911
+124,NNS,preterminal,libraries,0.03957438333949757
+125,NNS,preterminal,machines,0.038151867762952
+126,NNS,preterminal,planets,0.03246180545676975
+127,NNS,preterminal,professors,0.0967595095166292
+128,NNS,preterminal,projects,0.0629036387948448
+129,NNS,preterminal,rivers,0.05721357648866255
+130,NNS,preterminal,stories,0.011408574923895416
+131,NNS,preterminal,students,0.08367236621241003
+132,NNS,preterminal,teachers,0.03502233349455176
+133,P,preterminal,at,0.18317133868619995
+134,P,preterminal,by,0.11367798281448092
+135,P,preterminal,from,0.06343616471803541
+136,P,preterminal,in,0.24139550171385643
+137,P,preterminal,near,0.03479363290604311
+138,P,preterminal,on,0.22261351364041887
+139,P,preterminal,with,0.1409118655209654
+140,V_IN,preterminal,arrive,0.02461441611583255
+141,V_IN,preterminal,arrived,0.05042492917847025
+142,V_IN,preterminal,arrives,0.03531633616619453
+143,V_IN,preterminal,collapse,0.007617248977022348
+144,V_IN,preterminal,collapsed,0.010135347812401638
+145,V_IN,preterminal,collapses,0.007617248977022348
+146,V_IN,preterminal,cough,0.01391249606547057
+147,V_IN,preterminal,coughed,0.02524394082467737
+148,V_IN,preterminal,coughs,0.021466792571608436
+149,V_IN,preterminal,cried,0.01391249606547057
+150,V_IN,preterminal,cries,0.012653446647780927
+151,V_IN,preterminal,cry,0.0050991501416430595
+152,V_IN,preterminal,dance,0.01957821844507397
+153,V_IN,preterminal,danced,0.03720491029272899
+154,V_IN,preterminal,dances,0.02020774315391879
+155,V_IN,preterminal,depart,0.018319169027384327
+156,V_IN,preterminal,departed,0.04538873150771167
+157,V_IN,preterminal,departs,0.032168712621970415
+158,V_IN,preterminal,laugh,0.036575385583884165
+159,V_IN,preterminal,laughed,0.055461126849228826
+160,V_IN,preterminal,laughs,0.034686811457349705
+161,V_IN,preterminal,pause,0.0006924771797293044
+162,V_IN,preterminal,paused,0.004469625432798237
+163,V_IN,preterminal,pauses,0.0025810513062637704
+164,V_IN,preterminal,shout,0.01391249606547057
+165,V_IN,preterminal,shouted,0.03090966320428077
+166,V_IN,preterminal,shouts,0.017060119609694682
+167,V_IN,preterminal,sleep,0.026502990242367012
+168,V_IN,preterminal,sleeps,0.0403525338369531
+169,V_IN,preterminal,slept,0.05923827510229776
+170,V_IN,preterminal,smile,0.012023921938936104
+171,V_IN,preterminal,smiled,0.02020774315391879
+172,V_IN,preterminal,smiles,0.012023921938936104
+173,V_IN,preterminal,sneeze,0.012653446647780927
+174,V_IN,preterminal,sneezed,0.02524394082467737
+175,V_IN,preterminal,sneezes,0.012653446647780927
+176,V_IN,preterminal,travel,0.003840100723953415
+177,V_IN,preterminal,traveled,0.006987724268177526
+178,V_IN,preterminal,travels,0.003210576015108593
+179,V_IN,preterminal,wait,0.021466792571608436
+180,V_IN,preterminal,waited,0.04161158325464274
+181,V_IN,preterminal,waits,0.026502990242367012
+182,V_IN,preterminal,wander,0.015171545483160215
+183,V_IN,preterminal,wandered,0.03972300912810828
+184,V_IN,preterminal,wanders,0.023355366698142904
+185,V_TR,preterminal,admire,0.04072595281306715
+186,V_TR,preterminal,admired,0.053793103448275856
+187,V_TR,preterminal,admires,0.04362976406533575
+188,V_TR,preterminal,build,0.0341923774954628
+189,V_TR,preterminal,builds,0.0341923774954628
+190,V_TR,preterminal,built,0.023303085299455538
+191,V_TR,preterminal,call,0.009509981851179673
+192,V_TR,preterminal,called,0.012413793103448277
+193,V_TR,preterminal,calls,0.01459165154264973
+194,V_TR,preterminal,chase,0.050163339382940104
+195,V_TR,preterminal,chased,0.03782214156079855
+196,V_TR,preterminal,chases,0.03201451905626134
+197,V_TR,preterminal,find,0.019673321234119783
+198,V_TR,preterminal,finds,0.021125226860254084
+199,V_TR,preterminal,follow,0.02548094373865699
+200,V_TR,preterminal,followed,0.018221415607985483
+201,V_TR,preterminal,follows,0.017495462794918332
+202,V_TR,preterminal,found,0.022577132486388384
+203,V_TR,preterminal,help,0.01459165154264973
+204,V_TR,preterminal,helped,0.011687840290381127
+205,V_TR,preterminal,helps,0.019673321234119783
+206,V_TR,preterminal,meet,0.005154264972776769
+207,V_TR,preterminal,meets,0.010235934664246825
+208,V_TR,preterminal,met,0.007332123411978221
+209,V_TR,preterminal,move,0.0058802177858439195
+210,V_TR,preterminal,moved,0.008058076225045372
+211,V_TR,preterminal,moves,0.002976406533575317
+212,V_TR,preterminal,praise,0.0007985480943738658
+213,V_TR,preterminal,praised,0.003702359346642468
+214,V_TR,preterminal,praises,0.004428312159709619
+215,V_TR,preterminal,prefer,0.01531760435571688
+216,V_TR,preterminal,preferred,0.020399274047186933
+217,V_TR,preterminal,prefers,0.021851179673321234
+218,V_TR,preterminal,saw,0.03782214156079855
+219,V_TR,preterminal,see,0.0356442831215971
+220,V_TR,preterminal,sees,0.03637023593466425
+221,V_TR,preterminal,solve,0.029836660617059894
+222,V_TR,preterminal,solved,0.02838475499092559
+223,V_TR,preterminal,solves,0.02693284936479129
+224,V_TR,preterminal,visit,0.018221415607985483
+225,V_TR,preterminal,visited,0.016769509981851182
+226,V_TR,preterminal,visits,0.016769509981851182
+227,V_TR,preterminal,watch,0.03346642468239565
+228,V_TR,preterminal,watched,0.03637023593466425
+229,V_TR,preterminal,watches,0.020399274047186933

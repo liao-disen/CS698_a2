@@ -1,0 +1,884 @@
+{
+  "num_samples_requested": 1000,
+  "samples_checked": 1000,
+  "covered": 781,
+  "coverage": 0.781,
+  "uncovered": [
+    {
+      "sentence": "really smart the library at this student with a teacher",
+      "reason": "no S derivation from tags: ADV JJ DT NN P DT NN P DT NN"
+    },
+    {
+      "sentence": "six gardens chased quite noisy the students today tonight",
+      "reason": "no S derivation from tags: DT NNS V_TR DEG JJ DT NNS ADV ADV"
+    },
+    {
+      "sentence": "a student visit quite big the forest away",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NN ADV"
+    },
+    {
+      "sentence": "a ideas admires the car on the cars on a",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "this bridge admires two projects from a library in a",
+      "reason": "no S derivation from tags: DT NN V_TR DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "a projects follow the students near a cars in the",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "quite gentle the car wander",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "the project in a songs on a dog at the",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "this project on quite happy a dogs with three cars",
+      "reason": "no S derivation from tags: DT NN P DEG JJ DT NNS P DT NNS"
+    },
+    {
+      "sentence": "one songs by this student by six songs with the",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "a cat by four cats with the songs on very",
+      "reason": "no S derivation from tags: DT NN P DT NNS P DT NN P DEG"
+    },
+    {
+      "sentence": "very noisy the professor by the music waits",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NN V_IN"
+    },
+    {
+      "sentence": "the cities with a cities on the dog on a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "serious with two dogs with four artists on the songs",
+      "reason": "no S derivation from tags: JJ P DT NNS P DT NNS P DT NN"
+    },
+    {
+      "sentence": "this idea finds the cars in seven cats on a",
+      "reason": "no S derivation from tags: DT NN V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "the ideas in the artists by the car solved this",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN V_TR DT"
+    },
+    {
+      "sentence": "very serious a machine departed",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "this professor preferred the professor on the city on two",
+      "reason": "no S derivation from tags: DT NN V_TR DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "smart in the car five students chased this projects with",
+      "reason": "no S derivation from tags: JJ P DT NN DT NNS V_TR DT NNS P"
+    },
+    {
+      "sentence": "quite small this dogs helps the cat",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_TR DT NN"
+    },
+    {
+      "sentence": "the cities by the forest admire a machine in a",
+      "reason": "no S derivation from tags: DT NNS P DT NN V_TR DT NN P DT"
+    },
+    {
+      "sentence": "a cat at very kind the project at the dogs",
+      "reason": "no S derivation from tags: DT NN P DEG JJ DT NN P DT NNS"
+    },
+    {
+      "sentence": "the cat at this cat at quite serious this machine",
+      "reason": "no S derivation from tags: DT NN P DT NN P DEG JJ DT NN"
+    },
+    {
+      "sentence": "quite brave nine ideas at a idea in the teachers",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NN P DT NNS"
+    },
+    {
+      "sentence": "happy at the dog this planet in the cities admires",
+      "reason": "no S derivation from tags: JJ P DT NN DT NN P DT NNS V_TR"
+    },
+    {
+      "sentence": "the planets see quite honest the forests",
+      "reason": "no S derivation from tags: DT NNS V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "the car in the teacher arrive on the students on",
+      "reason": "no S derivation from tags: DT NN P DT NN V_IN P DT NNS P"
+    },
+    {
+      "sentence": "bright in this music this professor sleep",
+      "reason": "no S derivation from tags: JJ P DT NN DT NN V_IN"
+    },
+    {
+      "sentence": "a river on really happy a professors on the city",
+      "reason": "no S derivation from tags: DT NN P ADV JJ DT NNS P DT NN"
+    },
+    {
+      "sentence": "six ideas finds very ancient two machines",
+      "reason": "no S derivation from tags: DT NNS V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "a ideas in a dogs on a music with the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "the dogs arrives at noisy in the rivers the student",
+      "reason": "no S derivation from tags: DT NNS V_IN P JJ P DT NNS DT NN"
+    },
+    {
+      "sentence": "the cats with the river on one cars from the",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "very small this planets waited",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_IN"
+    },
+    {
+      "sentence": "a rivers in the river from eight students on the",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "very big the songs find a car",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_TR DT NN"
+    },
+    {
+      "sentence": "the libraries at careful on the dogs the car on",
+      "reason": "no S derivation from tags: DT NNS P JJ P DT NNS DT NN P"
+    },
+    {
+      "sentence": "very slow three gardens met the songs",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_TR DT NN"
+    },
+    {
+      "sentence": "two dogs with a gardens in a student on the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "seven projects watches the garden on this library with this",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "very smart the dogs help a rivers",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_TR DT NNS"
+    },
+    {
+      "sentence": "a ideas in four professors from modern at a project",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P JJ P DT NN"
+    },
+    {
+      "sentence": "the machines built the projects from three dogs in a",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "quiet by this songs quick by this river this dogs",
+      "reason": "no S derivation from tags: JJ P DT NN JJ P DT NN DT NNS"
+    },
+    {
+      "sentence": "big in a cat a cars cried",
+      "reason": "no S derivation from tags: JJ P DT NN DT NNS V_IN"
+    },
+    {
+      "sentence": "the rivers saw one cats at a dogs on this",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "the bridges at a teacher on the dog in the",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "a planet from the professors with the car on a",
+      "reason": "no S derivation from tags: DT NN P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "a garden on a songs can chase the cities with",
+      "reason": "no S derivation from tags: DT NN P DT NN MD V_TR DT NNS P"
+    },
+    {
+      "sentence": "quite bright five cars at a cat saw the students",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NN V_TR DT NNS"
+    },
+    {
+      "sentence": "the students admire the idea in quite big a professor",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DEG JJ DT NN"
+    },
+    {
+      "sentence": "this students with three ideas prefers quite big a cities",
+      "reason": "no S derivation from tags: DT NNS P DT NNS V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "a idea in the city in the cats with the",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "quick in a teacher the city cough",
+      "reason": "no S derivation from tags: JJ P DT NN DT NN V_IN"
+    },
+    {
+      "sentence": "the professors built very smart the student at the student",
+      "reason": "no S derivation from tags: DT NNS V_TR DEG JJ DT NN P DT NN"
+    },
+    {
+      "sentence": "the dogs on this garden in eight cats at eight",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "quite ancient the cars sleeps",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_IN"
+    },
+    {
+      "sentence": "the cities at this cats from the projects in a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "very gentle very big a student at the cat on",
+      "reason": "no S derivation from tags: DEG JJ DEG JJ DT NN P DT NN P"
+    },
+    {
+      "sentence": "the project in a professor in the planets smiles at",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NNS V_IN P"
+    },
+    {
+      "sentence": "a cat on the dog with the car in the",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "four students sees smart in this ideas the cat in",
+      "reason": "no S derivation from tags: DT NNS V_TR JJ P DT NNS DT NN P"
+    },
+    {
+      "sentence": "very honest the idea laughed",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "six dogs called this artists at three libraries at the",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "really serious a machine met two ideas",
+      "reason": "no S derivation from tags: ADV JJ DT NN V_TR DT NNS"
+    },
+    {
+      "sentence": "the cities in two machines with this libraries with a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "a planet chases very careful five professors",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "nine dogs on the library on the planet solved a",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NN V_TR DT"
+    },
+    {
+      "sentence": "very big the projects travel at a professors",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_IN P DT NNS"
+    },
+    {
+      "sentence": "a professor followed the teachers on the gardens in a",
+      "reason": "no S derivation from tags: DT NN V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "the forests near the student at nine stories at a",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "quite noisy this project by the garden build the garden",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NN V_TR DT NN"
+    },
+    {
+      "sentence": "a projects call six stories in two ideas by a",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "very quick a project will chased this dog near quite",
+      "reason": "no S derivation from tags: DEG JJ DT NN MD V_TR DT NN P DEG"
+    },
+    {
+      "sentence": "a city at nine projects from very small the teachers",
+      "reason": "no S derivation from tags: DT NN P DT NNS P DEG JJ DT NNS"
+    },
+    {
+      "sentence": "the project solved quite smart a professors",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "really slow a rivers admired this cities",
+      "reason": "no S derivation from tags: ADV JJ DT NNS V_TR DT NNS"
+    },
+    {
+      "sentence": "really big the professors laughed",
+      "reason": "no S derivation from tags: ADV JJ DT NNS V_IN"
+    },
+    {
+      "sentence": "this cars with very big a dogs in the student",
+      "reason": "no S derivation from tags: DT NNS P DEG JJ DT NNS P DT NN"
+    },
+    {
+      "sentence": "very smart a library at this songs near this projects",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NN P DT NNS"
+    },
+    {
+      "sentence": "a cars in the projects with the dogs with this",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "a student would coughed in very eager two professors",
+      "reason": "no S derivation from tags: DT NN MD V_IN P DEG JJ DT NNS"
+    },
+    {
+      "sentence": "brave in one planets the idea in a planet at",
+      "reason": "no S derivation from tags: JJ P DT NNS DT NN P DT NN P"
+    },
+    {
+      "sentence": "the students on the gardens admired the city in the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS V_TR DT NN P DT"
+    },
+    {
+      "sentence": "the city in brave at the cats this dog in",
+      "reason": "no S derivation from tags: DT NN P JJ P DT NNS DT NN P"
+    },
+    {
+      "sentence": "a rivers in eight cats in four songs on three",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "very smart a idea admires a dog",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_TR DT NN"
+    },
+    {
+      "sentence": "the libraries call this music by seven doctors at this",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "a students in the doctor on the students near a",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "very eager the dog build slow with the songs the",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_TR JJ P DT NN DT"
+    },
+    {
+      "sentence": "the teacher departs on very ancient a professor at the",
+      "reason": "no S derivation from tags: DT NN V_IN P DEG JJ DT NN P DT"
+    },
+    {
+      "sentence": "gentle on a doctors the project at very smart the",
+      "reason": "no S derivation from tags: JJ P DT NNS DT NN P DEG JJ DT"
+    },
+    {
+      "sentence": "one artists by a cats on the professor chased a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN V_TR DT"
+    },
+    {
+      "sentence": "this gardens at a dog on very noisy a student",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DEG JJ DT NN"
+    },
+    {
+      "sentence": "a doctors by a student with very careful the cars",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DEG JJ DT NNS"
+    },
+    {
+      "sentence": "the ideas at a river built very brave a rivers",
+      "reason": "no S derivation from tags: DT NNS P DT NN V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "a cat watch four cats on the teacher in three",
+      "reason": "no S derivation from tags: DT NN V_TR DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "one cities at very big the dog should danced with",
+      "reason": "no S derivation from tags: DT NNS P DEG JJ DT NN MD V_IN P"
+    },
+    {
+      "sentence": "two professors follow very kind the river today",
+      "reason": "no S derivation from tags: DT NNS V_TR DEG JJ DT NN ADV"
+    },
+    {
+      "sentence": "the cat danced by really bright this projects",
+      "reason": "no S derivation from tags: DT NN V_IN P ADV JJ DT NNS"
+    },
+    {
+      "sentence": "the music find quite slow a dog in the ideas",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NN P DT NNS"
+    },
+    {
+      "sentence": "this machines at the cars followed a dogs with a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS V_TR DT NNS P DT"
+    },
+    {
+      "sentence": "the dogs at a gardens with the music in quite",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DEG"
+    },
+    {
+      "sentence": "the professors on this professors could chase three projects on",
+      "reason": "no S derivation from tags: DT NNS P DT NNS MD V_TR DT NNS P"
+    },
+    {
+      "sentence": "very brave a students smiles",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_IN"
+    },
+    {
+      "sentence": "the projects with the cities by the city from the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "the city help quite modern a cat",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NN"
+    },
+    {
+      "sentence": "really big the dogs at this project coughed",
+      "reason": "no S derivation from tags: ADV JJ DT NNS P DT NN V_IN"
+    },
+    {
+      "sentence": "two teachers with very small the dog departed",
+      "reason": "no S derivation from tags: DT NNS P DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "the professors by eight cars on this ideas laugh at",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS V_IN P"
+    },
+    {
+      "sentence": "the cities solved the library on seven teachers by the",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "the cat in very calm a garden at the ideas",
+      "reason": "no S derivation from tags: DT NN P DEG JJ DT NN P DT NNS"
+    },
+    {
+      "sentence": "the songs with the students shouted in this car on",
+      "reason": "no S derivation from tags: DT NN P DT NNS V_IN P DT NN P"
+    },
+    {
+      "sentence": "one ideas from the teachers find the professors by a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS V_TR DT NNS P DT"
+    },
+    {
+      "sentence": "the cars in the students chase the car by a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS V_TR DT NN P DT"
+    },
+    {
+      "sentence": "quite quick the idea by three students by a teachers",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NNS P DT NNS"
+    },
+    {
+      "sentence": "the dogs on one projects in two libraries with the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "five songs at the students saw the project near the",
+      "reason": "no S derivation from tags: DT NN P DT NNS V_TR DT NN P DT"
+    },
+    {
+      "sentence": "quite quick the gardens near this doctor sleeps in two",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NN V_IN P DT"
+    },
+    {
+      "sentence": "the artist helped very careful one projects",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "a artist wandered at very big this dogs",
+      "reason": "no S derivation from tags: DT NN V_IN P DEG JJ DT NNS"
+    },
+    {
+      "sentence": "a students cries in quite wild the dog",
+      "reason": "no S derivation from tags: DT NNS V_IN P DEG JJ DT NN"
+    },
+    {
+      "sentence": "really careful very small three dogs move a river",
+      "reason": "no S derivation from tags: ADV JJ DEG JJ DT NNS V_TR DT NN"
+    },
+    {
+      "sentence": "quite modern the project with this students by really small",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NNS P ADV JJ"
+    },
+    {
+      "sentence": "the cities can chase the cats in very happy two",
+      "reason": "no S derivation from tags: DT NNS MD V_TR DT NNS P DEG JJ DT"
+    },
+    {
+      "sentence": "the planet in really ancient the city prefers this rivers",
+      "reason": "no S derivation from tags: DT NN P ADV JJ DT NN V_TR DT NNS"
+    },
+    {
+      "sentence": "very brave the libraries at the ideas builds a student",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NNS V_TR DT NN"
+    },
+    {
+      "sentence": "the professors at the story in two rivers found this",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NNS V_TR DT"
+    },
+    {
+      "sentence": "a libraries at the dogs at two ideas in the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "the projects follows the libraries at a machines on the",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "very honest a idea with calm by four ideas by",
+      "reason": "no S derivation from tags: DEG JJ DT NN P JJ P DT NNS P"
+    },
+    {
+      "sentence": "the dogs solve very noisy the car",
+      "reason": "no S derivation from tags: DT NNS V_TR DEG JJ DT NN"
+    },
+    {
+      "sentence": "the professors admire really careful a dogs in a city",
+      "reason": "no S derivation from tags: DT NNS V_TR ADV JJ DT NNS P DT NN"
+    },
+    {
+      "sentence": "one cities with this projects at the car at the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "smart in the city a car chases this teachers on",
+      "reason": "no S derivation from tags: JJ P DT NN DT NN V_TR DT NNS P"
+    },
+    {
+      "sentence": "this teachers see this libraries in a city at a",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "very small the professor by the professor at the garden",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NN P DT NN"
+    },
+    {
+      "sentence": "a student in this project on the library at this",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "quite bright this rivers at the projects on the dogs",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NNS P DT NNS"
+    },
+    {
+      "sentence": "the rivers arrives at the teacher in the students near",
+      "reason": "no S derivation from tags: DT NNS V_IN P DT NN P DT NNS P"
+    },
+    {
+      "sentence": "the forests in a cat with a cars on the",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "very brave the forest sleeps",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "very eager this machine on a cars in the cities",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NNS P DT NNS"
+    },
+    {
+      "sentence": "very ancient five gardens by the student on the libraries",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NN P DT NNS"
+    },
+    {
+      "sentence": "two rivers visits slow near this machine from seven forests",
+      "reason": "no S derivation from tags: DT NNS V_TR JJ P DT NN P DT NNS"
+    },
+    {
+      "sentence": "very noisy this cities waited",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_IN"
+    },
+    {
+      "sentence": "the teacher in the story sees very eager a doctors",
+      "reason": "no S derivation from tags: DT NN P DT NN V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "the dogs visit really small a car abroad",
+      "reason": "no S derivation from tags: DT NNS V_TR ADV JJ DT NN ADV"
+    },
+    {
+      "sentence": "small on the teachers a project laughed on a rivers",
+      "reason": "no S derivation from tags: JJ P DT NNS DT NN V_IN P DT NNS"
+    },
+    {
+      "sentence": "six cities at the cats on six professors at a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "this teacher in a professor in a project near three",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "the cat at six machines in a cars on the",
+      "reason": "no S derivation from tags: DT NN P DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "quite quick the dogs arrive in the songs",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_IN P DT NN"
+    },
+    {
+      "sentence": "the cats admire seven songs in a songs by the",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "this student at the student in three students in this",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "a gardens by three cities in a doctors in a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "this doctors builds the cities with a dogs at a",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "really smart the cities in one cities at the cities",
+      "reason": "no S derivation from tags: ADV JJ DT NNS P DT NNS P DT NNS"
+    },
+    {
+      "sentence": "one gardens on very gentle a artists wanders by this",
+      "reason": "no S derivation from tags: DT NNS P DEG JJ DT NNS V_IN P DT"
+    },
+    {
+      "sentence": "seven stories on the libraries near one cars helped a",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS V_TR DT"
+    },
+    {
+      "sentence": "this forests from five gardens with this professors saw two",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS V_TR DT"
+    },
+    {
+      "sentence": "very bright this library slept",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "this cars solved really smart a idea",
+      "reason": "no S derivation from tags: DT NNS V_TR ADV JJ DT NN"
+    },
+    {
+      "sentence": "quite happy the professors arrive",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_IN"
+    },
+    {
+      "sentence": "really bright the doctor chase one planets",
+      "reason": "no S derivation from tags: ADV JJ DT NN V_TR DT NNS"
+    },
+    {
+      "sentence": "the planets shouts in quite big the students at a",
+      "reason": "no S derivation from tags: DT NNS V_IN P DEG JJ DT NNS P DT"
+    },
+    {
+      "sentence": "the planets see very smart this students at the student",
+      "reason": "no S derivation from tags: DT NNS V_TR DEG JJ DT NNS P DT NN"
+    },
+    {
+      "sentence": "quite serious really quick the garden finds one cats elsewhere",
+      "reason": "no S derivation from tags: DEG JJ ADV JJ DT NN V_TR DT NNS ADV"
+    },
+    {
+      "sentence": "this forests admire the garden at three rivers by four",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "quite quick the rivers on the libraries follows this cars",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NNS V_TR DT NNS"
+    },
+    {
+      "sentence": "bright with the doctor in a cities four ideas from",
+      "reason": "no S derivation from tags: JJ P DT NN P DT NNS DT NNS P"
+    },
+    {
+      "sentence": "this dogs see a student on a project at three",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "the dogs watches five cars in a teachers with the",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "five projects admire a music on this library on a",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "a planet saw slow on the music one students",
+      "reason": "no S derivation from tags: DT NN V_TR JJ P DT NN DT NNS"
+    },
+    {
+      "sentence": "very quick a student waited",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "this dog with the teacher at the library chases this",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NN V_TR DT"
+    },
+    {
+      "sentence": "quite quick the ideas slept",
+      "reason": "no S derivation from tags: DEG JJ DT NNS V_IN"
+    },
+    {
+      "sentence": "the dog builds nine artists by very slow five professors",
+      "reason": "no S derivation from tags: DT NN V_TR DT NNS P DEG JJ DT NNS"
+    },
+    {
+      "sentence": "a professors at a forests moved the professors at this",
+      "reason": "no S derivation from tags: DT NNS P DT NNS V_TR DT NNS P DT"
+    },
+    {
+      "sentence": "two machines by one songs at quick by one cities",
+      "reason": "no S derivation from tags: DT NNS P DT NN P JJ P DT NNS"
+    },
+    {
+      "sentence": "the professor prefer quite small this artists",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NNS"
+    },
+    {
+      "sentence": "this project in the garden by this professor on a",
+      "reason": "no S derivation from tags: DT NN P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "really slow a professor danced",
+      "reason": "no S derivation from tags: ADV JJ DT NN V_IN"
+    },
+    {
+      "sentence": "the project at a gardens at a cat preferred this",
+      "reason": "no S derivation from tags: DT NN P DT NNS P DT NN V_TR DT"
+    },
+    {
+      "sentence": "this professors at seven cities cat arrive in a ideas",
+      "reason": "no S derivation from tags: DT NNS P DT NNS NN V_IN P DT NNS"
+    },
+    {
+      "sentence": "gentle on the student five cities laughed",
+      "reason": "no S derivation from tags: JJ P DT NN DT NNS V_IN"
+    },
+    {
+      "sentence": "the cars on very quick this forests danced with the",
+      "reason": "no S derivation from tags: DT NNS P DEG JJ DT NNS V_IN P DT"
+    },
+    {
+      "sentence": "serious in a cars this music arrive",
+      "reason": "no S derivation from tags: JJ P DT NNS DT NN V_IN"
+    },
+    {
+      "sentence": "a rivers by a cat on the project chased the",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NN V_TR DT"
+    },
+    {
+      "sentence": "the cities found the teachers on the artists on two",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "very bright a machines in the gardens coughed",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NNS V_IN"
+    },
+    {
+      "sentence": "this student with very quick this machines visited quite gentle",
+      "reason": "no S derivation from tags: DT NN P DEG JJ DT NNS V_TR DEG JJ"
+    },
+    {
+      "sentence": "the gardens at a city with very bright seven forests",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DEG JJ DT NNS"
+    },
+    {
+      "sentence": "quite calm a doctor smile",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "seven doctors in this city at this idea on a",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "quite careful the city on a gardens laugh",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NNS V_IN"
+    },
+    {
+      "sentence": "very slow a teachers with the professor sleeps on really",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NN V_IN P ADV"
+    },
+    {
+      "sentence": "one professors at three students with a songs in two",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "a music on six teachers at a idea at the",
+      "reason": "no S derivation from tags: DT NN P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "the teachers with this dog near the teacher on the",
+      "reason": "no S derivation from tags: DT NNS P DT NN P DT NN P DT"
+    },
+    {
+      "sentence": "the rivers by one rivers in the professor in the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NN P DT"
+    },
+    {
+      "sentence": "the projects arrived at very happy very ancient this dog",
+      "reason": "no S derivation from tags: DT NNS V_IN P DEG JJ DEG JJ DT NN"
+    },
+    {
+      "sentence": "a professors preferred the car on six ideas by a",
+      "reason": "no S derivation from tags: DT NNS V_TR DT NN P DT NNS P DT"
+    },
+    {
+      "sentence": "the professors with the cities with a forests waits near",
+      "reason": "no S derivation from tags: DT NNS P DT NNS P DT NNS V_IN P"
+    },
+    {
+      "sentence": "very bright a machine smiled",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "very slow a story wait",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_IN"
+    },
+    {
+      "sentence": "a idea visits five students on a rivers from three",
+      "reason": "no S derivation from tags: DT NN V_TR DT NNS P DT NNS P DT"
+    },
+    {
+      "sentence": "the garden slept at happy near a student a cities",
+      "reason": "no S derivation from tags: DT NN V_IN P JJ P DT NN DT NNS"
+    },
+    {
+      "sentence": "small on a cat this gardens admired two rivers nearby",
+      "reason": "no S derivation from tags: JJ P DT NN DT NNS V_TR DT NNS ADV"
+    },
+    {
+      "sentence": "a projects in a planets solved a city on the",
+      "reason": "no S derivation from tags: DT NNS P DT NNS V_TR DT NN P DT"
+    },
+    {
+      "sentence": "the dogs by this cities finds two songs in very",
+      "reason": "no S derivation from tags: DT NNS P DT NNS V_TR DT NN P DEG"
+    },
+    {
+      "sentence": "a car sneezed from the artists on the forests on",
+      "reason": "no S derivation from tags: DT NN V_IN P DT NNS P DT NNS P"
+    },
+    {
+      "sentence": "very bright a gardens at the gardens near this cats",
+      "reason": "no S derivation from tags: DEG JJ DT NNS P DT NNS P DT NNS"
+    },
+    {
+      "sentence": "a planet dance in very honest nine teachers",
+      "reason": "no S derivation from tags: DT NN V_IN P DEG JJ DT NNS"
+    },
+    {
+      "sentence": "the idea arrive near really happy quite calm the students",
+      "reason": "no S derivation from tags: DT NN V_IN P ADV JJ DEG JJ DT NNS"
+    },
+    {
+      "sentence": "the cities call brave in the professors the dog at",
+      "reason": "no S derivation from tags: DT NNS V_TR JJ P DT NNS DT NN P"
+    },
+    {
+      "sentence": "really small the machine saw the cat",
+      "reason": "no S derivation from tags: ADV JJ DT NN V_TR DT NN"
+    },
+    {
+      "sentence": "very brave two songs in the cats on this doctors",
+      "reason": "no S derivation from tags: DEG JJ DT NN P DT NNS P DT NNS"
+    }
+  ]
+}

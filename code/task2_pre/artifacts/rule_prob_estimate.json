@@ -1,0 +1,8 @@
+{
+  "samples_checked": 3000,
+  "covered": 2753,
+  "coverage": 0.9176666666666666,
+  "binary_rule_count": 29,
+  "lexical_rule_count": 200,
+  "out_csv": "/Users/liaodisen/Desktop/CS698_a2/pcfg2_from_rules.csv"
+}

@@ -1,0 +1,38 @@
+{
+  "description": "29-rule version that previously reached ~0.909 coverage (k14 mapping, max_new_tokens=16)",
+  "rules": [
+    ["S", "NP", "VP"],
+    ["S", "NP", "V_IN"],
+    ["S", "S", "ADV"],
+    ["S", "S", "PP"],
+
+    ["NP", "DT", "NN"],
+    ["NP", "DT", "NNS"],
+    ["NP", "JJ", "NN"],
+    ["NP", "JJ", "NNS"],
+    ["NP", "DT", "NP_core"],
+    ["NP_core", "JJ", "NN"],
+    ["NP_core", "JJ", "NNS"],
+    ["NP", "NP", "PP"],
+    ["NP", "NP", "ADV"],
+
+    ["VP", "V_TR", "NP"],
+    ["VP", "V_IN", "ADV"],
+    ["VP", "V_IN", "PP"],
+    ["VP", "MD", "VP_base"],
+    ["VP_base", "V_TR", "NP"],
+    ["VP_base", "V_IN", "ADV"],
+    ["VP_base", "V_IN", "PP"],
+    ["VP", "VP", "PP"],
+
+    ["PP", "P", "NP"],
+    ["ADJP", "DEG", "JJ"],
+    ["NP", "ADJP", "NN"],
+    ["NP", "ADJP", "NNS"],
+
+    ["S", "ADJP", "VP"],
+    ["S", "ADV", "S"],
+    ["NP", "ADJP", "NP"],
+    ["NP", "NP", "NP"]
+  ]
+}

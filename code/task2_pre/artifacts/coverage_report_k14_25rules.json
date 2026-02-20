@@ -1,0 +1,56 @@
+{
+  "num_samples_requested": 30,
+  "samples_checked": 30,
+  "covered": 18,
+  "coverage": 0.6,
+  "uncovered": [
+    {
+      "sentence": "really smart the library at this student with a teacher paused",
+      "reason": "no S derivation from tags: V_IN JJ DT NN P DT NN P DT NN V_IN"
+    },
+    {
+      "sentence": "the cars slept",
+      "reason": "no S derivation from tags: DT MD V_IN"
+    },
+    {
+      "sentence": "six gardens chased quite noisy the students today tonight",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NN ADV ADV"
+    },
+    {
+      "sentence": "five cars from the songs shouted",
+      "reason": "no S derivation from tags: DT MD P DT NN V_IN"
+    },
+    {
+      "sentence": "a student visit quite big the forest away",
+      "reason": "no S derivation from tags: DT NN V_TR DEG JJ DT NN ADV"
+    },
+    {
+      "sentence": "a ideas admires the car on the cars on a libraries today",
+      "reason": "no S derivation from tags: DT NN V_TR DT MD P DT MD P DT NN ADV"
+    },
+    {
+      "sentence": "one dogs at the cars arrive",
+      "reason": "no S derivation from tags: DT NN P DT MD V_IN"
+    },
+    {
+      "sentence": "seven professors by the professors from very noisy this ideas at the bridge in the professors",
+      "reason": "no S derivation from tags: DT NN P DT NN P DEG JJ DT NN P DT NN P DT NN"
+    },
+    {
+      "sentence": "three planets by the dogs wait at the cars upstairs",
+      "reason": "no S derivation from tags: DT MD P DT NN V_IN P DT MD ADV"
+    },
+    {
+      "sentence": "quite calm a students calls quite modern the music near this professor from a idea with",
+      "reason": "no S derivation from tags: DEG JJ DT NN V_TR DEG JJ DT NN P DT NN P DT NN P"
+    },
+    {
+      "sentence": "a car admires the professors",
+      "reason": "no S derivation from tags: DT MD V_TR DT NN"
+    },
+    {
+      "sentence": "a projects follow the students near a cars in the story",
+      "reason": "no S derivation from tags: DT NN V_TR DT NN P DT MD P DT NN"
+    }
+  ]
+}
